@@ -1,12 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import userStore from '../zustand/userStore';
 
 const PostDetailCard = () => {
+  const navigate = useNavigate();
+  const { user, setUser } = userStore();
+  console.log('user==>', user);
+  console.log('setUser==>', setUser);
+
   //포스트 아이디 가져오기(메인화면에서 선택하면 쿼리스트링으로)
   const [searchParams, setSearchParams] = useSearchParams();
-  const postId = searchParams.get('postId');
-  // console.log('postId ===>', postId); //1
+  const postId = searchParams.get('id'); // postId = 1
 
   //해당 포스트 내용 json-server에서 가져오기
   const {
@@ -17,10 +22,9 @@ const PostDetailCard = () => {
     queryKey: ['posts', postId],
     queryFn: async () => {
       const response = await axios.get(`http://localhost:4000/posts?id=${postId}`);
-      return response.data[0];
+      return response.data[0]; //질문
     }
   });
-  console.log('post', post);
 
   if (isPostPending) {
     return <div>포스트를 불러오고 있습니다 ...</div>;
@@ -30,8 +34,13 @@ const PostDetailCard = () => {
   }
 
   //포스트 삭제하기
-  const deletePost = () => {
-    console.log();
+  const deletePost = async () => {
+    const confirm = window.confirm('게시글이 삭제됩니다. 삭제하시겠습니까?');
+    if (confirm) {
+      const response = await axios.delete(`http://localhost:4000/posts/${postId}`);
+      navigate('/');
+      return response;
+    }
   };
   return (
     <>
@@ -41,7 +50,7 @@ const PostDetailCard = () => {
       <div>{post.postContent}</div>
       <div>{post.foodType}</div>
       <div>{post.address}</div>
-      <button onClick={deletePost}>삭제하기</button>
+      {user.userId === post.userId ? <button onClick={deletePost}>삭제하기</button> : <></>}
     </>
   );
 };

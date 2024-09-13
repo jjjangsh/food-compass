@@ -14,7 +14,15 @@
       "title": "테스트 게시물",
       "postContent": "테스트 게시물 입니다",
       "foodType": "양식",
-      "address": "경기도 고양시"
+      "address": "서울시"
+    },
+    {
+      "id": "3",
+      "userId": "heerok",
+      "title": "테스트 게시물",
+      "postContent": "테스트 게시물 입니다",
+      "foodType": "양식",
+      "address": "서울시"
     }
   ],
   "comments": []
