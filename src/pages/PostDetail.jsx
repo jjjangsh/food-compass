@@ -1,5 +1,13 @@
+import PostDetailCard from '../components/PostDetailCard';
+import PostDetailMap from '../components/PostDetailMap';
+
 const PostDetail = () => {
-  return <div>PostDetail</div>;
+  return (
+    <>
+      <PostDetailCard />
+      <PostDetailMap />
+    </>
+  );
 };
 
 export default PostDetail;

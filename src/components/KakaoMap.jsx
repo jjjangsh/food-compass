@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 const KakaoMap = () => {
   const [address, setAddress] = useState();
   const [myMap, setMyMap] = useState(null);
-  console.log(address);
-  console.log(myMap);
+  // console.log(address);
+  // console.log(myMap);
 
   useEffect(() => {
     const container = document.getElementById("map");
