@@ -7,6 +7,22 @@
       "postContent": "테스트 게시물 입니다",
       "foodType": "한식",
       "address": "서울시"
+    },
+    {
+      "id": "2",
+      "userId": "홍길순",
+      "title": "테스트 게시물",
+      "postContent": "테스트 게시물 입니다",
+      "foodType": "양식",
+      "address": "서울시"
+    },
+    {
+      "id": "3",
+      "userId": "heerok",
+      "title": "테스트 게시물",
+      "postContent": "테스트 게시물 입니다",
+      "foodType": "양식",
+      "address": "서울시"
     }
   ],
   "comments": []
