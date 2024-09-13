@@ -7,7 +7,7 @@ const PostDetailCard = () => {
   const navigate = useNavigate();
   const { user } = userStore();
 
-  //포스트 아이디 가져오기(메인화면에서 선택하면 쿼리스트링으로)
+  //포스트 아이디 가져오기
   const [searchParams, setSearchParams] = useSearchParams();
   const postId = searchParams.get('id'); // postId = 1
 
@@ -23,7 +23,6 @@ const PostDetailCard = () => {
       return response.data[0]; //질문
     }
   });
-
   if (isPostPending) return <div>포스트를 불러오고 있습니다 ...</div>;
   if (isPostError) return <div>에러가 발생했습니다 ...</div>;
 
