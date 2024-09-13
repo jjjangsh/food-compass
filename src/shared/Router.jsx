@@ -13,8 +13,7 @@ import PostDetail from "./../pages/PostDetail";
 import PostWrite from "./../pages/PostWrite";
 import PostUpdate from "./../pages/PostUpdate";
 import MyPage from "./../pages/MyPage";
-
-const token = localStorage.getItem("user");
+import userStore from "../zustand/userStore";
 
 const Router = () => {
   return (
@@ -44,7 +43,8 @@ export default Router;
 
 // 로그인 시 접근 불가
 const AuthRoute = () => {
-  if (token) {
+  const { user } = userStore();
+  if (user) {
     return <Navigate to="/" />;
   }
   return <Outlet />;
@@ -52,7 +52,8 @@ const AuthRoute = () => {
 
 // 비로그인 시 접근 불가
 const PrivateRoute = () => {
-  if (!token) {
+  const { user } = userStore();
+  if (!user) {
     return <Navigate to="/signin" />;
   }
   return <Outlet />;
