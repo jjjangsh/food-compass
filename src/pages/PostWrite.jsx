@@ -1,9 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPost } from '../api/post';
+import userStore from '../zustand/userStore';
 
 const PostWrite = () => {
   const queryClient = useQueryClient();
+  const { user } = userStore();
+  const [imagePreview, setImagePreview] = useState(null);
   const [formData, setFormData] = useState({
     userId: '',
     title: '',
@@ -12,9 +15,17 @@ const PostWrite = () => {
     address: '',
     image: ''
   });
-  const [imagePreview, setImagePreview] = useState(null);
 
-  // formData에 userId추가
+  // userId 업데이트
+  useEffect(() => {
+    console.log(user);
+    if (user && user.userId) {
+      setFormData((prev) => ({
+        ...prev,
+        userId: user.userId
+      }));
+    }
+  }, [user]);
 
   // 폼 입력 핸들러
   const handleChange = (e) => {
@@ -23,20 +34,22 @@ const PostWrite = () => {
     // 이미지 처리
     if (name === 'image' && files && files[0]) {
       const file = files[0];
-      const reader = new FileReader();
 
+      // FileReader 생성
+      const reader = new FileReader();
+      // FileReader가 파일을 읽게함
+      reader.readAsDataURL(file);
       reader.onloadend = () => {
-        // 이미지ㅐ URL을 formData에 저장
-        setImagePreview(reader.result);
-        setFormData((prevData) => ({
-          ...prevData,
-          image: reader.result
+        const imgUrl = reader.result;
+        setImagePreview(imgUrl);
+        setFormData((prev) => ({
+          ...prev,
+          image: imgUrl
         }));
       };
-      reader.readAsDataURL(file); // 파일을 읽어서 URL로 변환
     } else {
-      setFormData((prevData) => ({
-        ...prevData,
+      setFormData((prev) => ({
+        ...prev,
         [name]: value
       }));
     }
@@ -67,15 +80,16 @@ const PostWrite = () => {
     // 미리보기 초기화
     setImagePreview(null);
   };
-
-  console.log(formData);
-
   return (
-    <div className="flex w-full justify-center items-center h-[calc(100vh-24px)] overflow-hidden">
-      <form onSubmit={handleSubmit} className="flex flex-col w-60 gap-4">
-        <div>{imagePreview && <img src={imagePreview} className="max-h-full" alt="업로드 미리보기" />}</div>
+    <div className="flex w-full justify-center items-center h-[calc(100vh-100px)] ">
+      <form onSubmit={handleSubmit} className="flex flex-col w-60 gap-2">
+        <div>
+          {imagePreview && (
+            <img src={imagePreview} className="max-h-full min-w-[240px] max-h-[400px]" alt="업로드 미리보기" />
+          )}
+        </div>
         <input type="file" accept="image/*" name="image" onChange={handleChange} />
-        <p>닉네임: 짱구</p>
+        {<p>닉네임: {user?.nickname}</p>}
         <p>
           제목 :
           <input
