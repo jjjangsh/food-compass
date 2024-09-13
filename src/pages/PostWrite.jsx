@@ -11,6 +11,7 @@ const PostWrite = () => {
     foodType: '',
     address: ''
   });
+  const [submitTime, setSubmitTime] = useState(null);
 
   // formData에 userId추가
 
@@ -34,8 +35,17 @@ const PostWrite = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const currentTime = new Date().toLocaleString('ko-KR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    setSubmitTime(currentTime);
+    console.log(submitTime);
     mutate(formData);
-
+    console.log(formData);
     // formData 초기화
     setFormData({
       userId: '',
@@ -51,7 +61,7 @@ const PostWrite = () => {
   return (
     <div className="flex w-full justify-center my-auto">
       <form onSubmit={handleSubmit} className="flex flex-col w-60 gap-4">
-        닉네임: 짱구
+        <p>닉네임: 짱구</p>
         <p>
           제목 :
           <input
