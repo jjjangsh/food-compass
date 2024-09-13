@@ -14,8 +14,7 @@ import PostWrite from "./../pages/PostWrite";
 import PostUpdate from "./../pages/PostUpdate";
 import MyPage from "./../pages/MyPage";
 
-// 로그인 임시 상태값
-const token = true;
+const token = localStorage.getItem("user");
 
 const Router = () => {
   return (
@@ -54,7 +53,7 @@ const AuthRoute = () => {
 // 비로그인 시 접근 불가
 const PrivateRoute = () => {
   if (!token) {
-    return <Navigate to="/sign#in" />;
+    return <Navigate to="/signin" />;
   }
   return <Outlet />;
 };
