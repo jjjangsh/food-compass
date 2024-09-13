@@ -9,19 +9,37 @@ const PostWrite = () => {
     title: '',
     postContent: '',
     foodType: '',
-    address: ''
+    address: '',
+    image: ''
   });
-  const [submitTime, setSubmitTime] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
   // formData에 userId추가
 
   // 폼 입력 핸들러
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
+    const { name, value, files } = e.target;
+
+    // 이미지 처리
+    if (name === 'image' && files && files[0]) {
+      const file = files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        // 이미지ㅐ URL을 formData에 저장
+        setImagePreview(reader.result);
+        setFormData((prevData) => ({
+          ...prevData,
+          image: reader.result
+        }));
+      };
+      reader.readAsDataURL(file); // 파일을 읽어서 URL로 변환
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value
+      }));
+    }
   };
 
   const { mutate } = useMutation({
@@ -35,15 +53,6 @@ const PostWrite = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const currentTime = new Date().toLocaleString('ko-KR', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-    setSubmitTime(currentTime);
-    console.log(submitTime);
     mutate(formData);
     console.log(formData);
     // formData 초기화
@@ -52,15 +61,20 @@ const PostWrite = () => {
       title: '',
       postContent: '',
       foodType: '',
-      address: ''
+      address: '',
+      image: ''
     });
+    // 미리보기 초기화
+    setImagePreview(null);
   };
 
   console.log(formData);
 
   return (
-    <div className="flex w-full justify-center my-auto">
+    <div className="flex w-full justify-center items-center h-[calc(100vh-24px)] overflow-hidden">
       <form onSubmit={handleSubmit} className="flex flex-col w-60 gap-4">
+        <div>{imagePreview && <img src={imagePreview} className="max-h-full" alt="업로드 미리보기" />}</div>
+        <input type="file" accept="image/*" name="image" onChange={handleChange} />
         <p>닉네임: 짱구</p>
         <p>
           제목 :
