@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import HeaderButton from "./HeaderButton";
 
 const Header = ({ children }) => {
   const navigate = useNavigate();
@@ -6,10 +7,19 @@ const Header = ({ children }) => {
     <>
       <div className="fixed w-full bg-sky-200 h-20 p-5">
         <div className="flex flex-row justify-between">
-          <p onClick={() => navigate("/")}>로고입니다</p>
-          <div>
-            <button onClick={() => navigate("/signin")}>로그인</button>
-            <button onClick={() => navigate("/signup")}>회원가입</button>
+          <button onClick={() => navigate("/")}>로고입니다</button>
+          <div className="flex flex-row gap-2 px-4">
+            <HeaderButton onClick={() => navigate("/signin")} name={"로그인"} />
+            <HeaderButton
+              onClick={() => navigate("/signup")}
+              name={"회원가입"}
+            />
+
+            <HeaderButton
+              onClick={() => navigate("/mypage")}
+              name={"마이페이지"}
+            />
+            <HeaderButton onClick={() => {}} name={"로그아웃"} />
           </div>
         </div>
       </div>

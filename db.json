@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "userId": "홍길동",
+      "title": "테스트 게시물",
+      "postContent": "테스트 게시물 입니다",
+      "foodType": "한식",
+      "address": "서울시"
+    }
+  ],
+  "comments": []
+}
