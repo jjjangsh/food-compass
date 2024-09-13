@@ -5,15 +5,13 @@ import userStore from '../zustand/userStore';
 
 const PostDetailCard = () => {
   const navigate = useNavigate();
-  const { user, setUser } = userStore();
-  console.log('user==>', user);
-  console.log('setUser==>', setUser);
+  const { user } = userStore();
 
   //포스트 아이디 가져오기(메인화면에서 선택하면 쿼리스트링으로)
   const [searchParams, setSearchParams] = useSearchParams();
   const postId = searchParams.get('id'); // postId = 1
 
-  //해당 포스트 내용 json-server에서 가져오기
+  //해당 포스트 가져와서 보여주기
   const {
     data: post,
     isError: isPostError,
@@ -26,12 +24,8 @@ const PostDetailCard = () => {
     }
   });
 
-  if (isPostPending) {
-    return <div>포스트를 불러오고 있습니다 ...</div>;
-  }
-  if (isPostError) {
-    return <div>에러가 발생했습니다 ...</div>;
-  }
+  if (isPostPending) return <div>포스트를 불러오고 있습니다 ...</div>;
+  if (isPostError) return <div>에러가 발생했습니다 ...</div>;
 
   //포스트 삭제하기
   const deletePost = async () => {
@@ -50,7 +44,20 @@ const PostDetailCard = () => {
       <div>{post.postContent}</div>
       <div>{post.foodType}</div>
       <div>{post.address}</div>
-      {user.userId === post.userId ? <button onClick={deletePost}>삭제하기</button> : <></>}
+      {user.userId === post.userId ? (
+        <div>
+          <button onClick={deletePost}>삭제하기</button>
+          <button
+            onClick={() => {
+              navigate(`/postupdate?id=${postId}`);
+            }}
+          >
+            수정하기
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </>
   );
 };
