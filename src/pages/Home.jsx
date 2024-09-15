@@ -1,23 +1,33 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import KakaoMap from '../components/KakaoMap';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import KakaoMap from "../components/KakaoMap";
+import { useState } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [address, setAddress] = useState();
+  if (address) {
+    console.log(address);
+    console.log(address.La, address.Ma);
+  }
+
   // 포스트 가져와서 보여주기
   const { data, isPending, isError } = useQuery({
-    queryKey: ['post'],
+    queryKey: ["post"],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:4000/posts');
+      const response = await axios.get("http://localhost:4000/posts");
       return response.data;
-    }
+    },
   });
   if (isPending) return <div>가져오는 중</div>;
   if (isError) return <div>오류남</div>;
   return (
     <>
-      <button className="fixed bottom-2 right-2 bg-sky-200 w-1/5 h-10" onClick={() => navigate('/postwrite')}>
+      <button
+        className="fixed bottom-2 right-2 bg-sky-200 w-1/5 h-10"
+        onClick={() => navigate("/postwrite")}
+      >
         게시물 추가
       </button>
       <div className="flex flex-col w-full gap-4 justify-center items-center">
@@ -29,7 +39,7 @@ const Home = () => {
           <button>양식</button>
           <button>디저트</button>
         </div>
-        <KakaoMap />
+        <KakaoMap setAddress={setAddress} />
         {data.map((post) => {
           return (
             <div

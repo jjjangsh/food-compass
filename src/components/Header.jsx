@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import HeaderButton from "./HeaderButton";
 import userStore from "../zustand/userStore";
 
 const Header = ({ children }) => {
@@ -13,22 +12,30 @@ const Header = ({ children }) => {
           <div className="flex flex-row gap-2 px-4">
             {user ? (
               <>
-                <HeaderButton
+                <button
                   onClick={() => navigate("/mypage")}
-                  name={"마이페이지"}
-                />
-                <HeaderButton onClick={logout} name={"로그아웃"} />
+                  className="headerBtn"
+                >
+                  마이페이지
+                </button>
+                <button onClick={logout} className="headerBtn">
+                  로그아웃
+                </button>
               </>
             ) : (
               <>
-                <HeaderButton
+                <button
                   onClick={() => navigate("/signin")}
-                  name={"로그인"}
-                />
-                <HeaderButton
+                  className="headerBtn"
+                >
+                  로그인
+                </button>
+                <button
                   onClick={() => navigate("/signup")}
-                  name={"회원가입"}
-                />
+                  className="headerBtn"
+                >
+                  회원가입
+                </button>
               </>
             )}
           </div>
