@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { AuthenticatedStore } from '../zustand/store';
+
 import axios from 'axios';
+import userStore from '../zustand/userStore';
+import MyPosts from '../components/MyPosts';
 
 const MyPage = () => {
   const [newNickname, setNewNickname] = useState('');
-  const { user, setUser } = AuthenticatedStore((state) => {
+  const { user, setUser } = userStore((state) => {
     return state;
   });
+  console.log(user);
 
   const changeNicknameHandler = async (e) => {
     e.preventDefault();
@@ -25,8 +28,9 @@ const MyPage = () => {
 
       if (data.success) {
         alert('닉네임 변경 성공');
-        console.log(data);
-        setUser(data); // 이 처리를 해야만 바뀐 user을 쓸 수 있음
+        const newUser = { ...user, nickname: data.nickname };
+        setUser(newUser);
+        console.log(user);
         // return문에서 바로 data.nickname을 보여주면 안되냐? 안된다 접근 불가다 이 data는 해당 스코프내에서만 사용 가능
         setNewNickname('');
       } else {
@@ -54,6 +58,7 @@ const MyPage = () => {
         />
         <button>수정</button>
       </form>
+      <MyPosts />
     </div>
   );
 };

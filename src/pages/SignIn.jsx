@@ -1,66 +1,34 @@
-import { useState } from 'react';
-import { AuthenticatedStore } from '../zustand/store';
-import axios from 'axios';
+import AuthForm from '../components/AuthForm';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../api/auth';
+import userStore from '../zustand/userStore';
 
 const SignIn = () => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const { setUser } = AuthenticatedStore((state) => {
-    return state;
-  });
+  const navigate = useNavigate();
+  const { setUser } = userStore();
 
-  const loginHandler = async (e) => {
-    e.preventDefault();
+  const handleLogin = async (formData) => {
     try {
-      const response = await axios.post('https://moneyfulpublicpolicy.co.kr/login', {
-        id,
-        password
-      });
+      const response = await login(formData);
 
-      const data = response.data;
-      if (data.success) {
-        alert('로그인 성공');
-        setUser(data);
-        setId('');
-        setPassword('');
-      } else alert('로그인실패');
+      if (response.success) {
+        alert('로그인 성공!, 메인 페이지로 이동합니다.');
+        console.log('로그인 페이지에서 테스트용 콘솔 ', response);
+        setUser(response);
+        navigate('/');
+      }
     } catch (error) {
-      console.log('error', error);
+      alert('로그인에 실패했습니다.');
+      console.log('로그인 에러 => ', error);
     }
-  };
-
-  const handleLogout = () => {
-    setUser(null);
-    alert('로그아웃완료');
-    setId('');
-    setPassword('');
   };
 
   return (
     <div>
-      <form onSubmit={loginHandler}>
-        <h1>로그인페이지</h1>
-        <input
-          type="text"
-          value={id}
-          placeholder="id"
-          onChange={(e) => {
-            setId(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          value={password}
-          placeholder="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button>로그인</button>
-        <button type="button" onClick={handleLogout}>
-          로그아웃{' '}
-        </button>
-      </form>
+      <div>
+        <h3>로그인 페이지</h3>
+        <AuthForm type="signin" onSubmit={handleLogin} />
+      </div>
     </div>
   );
 };
