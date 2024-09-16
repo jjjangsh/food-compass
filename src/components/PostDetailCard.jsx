@@ -17,7 +17,6 @@ const PostDetailCard = ({ post, postId }) => {
   };
   return (
     <>
-      <div>{post.id}</div>
       <div>{post.userId}</div>
       <div>{post.title}</div>
       <div>{post.postContent}</div>
