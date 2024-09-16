@@ -3,26 +3,26 @@
     {
       "id": "1",
       "userId": "홍길동",
-      "title": "테스트 게시물",
+      "title": "이태리재",
       "postContent": "테스트 게시물 입니다",
-      "foodType": "한식",
-      "address": "서울시"
+      "foodType": "양식",
+      "address": "서울 종로구 율곡로1길 74-9 1층 (우)03062"
     },
     {
       "id": "2",
       "userId": "홍길순",
-      "title": "테스트 게시물",
+      "title": "스파르타",
       "postContent": "테스트 게시물 입니다",
       "foodType": "양식",
-      "address": "서울시"
+      "address": "서울 강남구 테헤란로44길 8 12층"
     },
     {
       "id": "3",
       "userId": "heerok",
-      "title": "테스트 게시물",
-      "postContent": "테스트 게시물 입니다",
-      "foodType": "양식",
-      "address": "서울시"
+      "title": "윤시커피로스터스",
+      "postContent": "022 IMAB 에스프레소 콩쿠르 우승 2022 IMAB 에스프레소 콩쿠르 우승 2022 IMAR 로스팅 콩쿠르 5위한 커피 집",
+      "foodType": "카페",
+      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
     }
   ],
   "comments": []
