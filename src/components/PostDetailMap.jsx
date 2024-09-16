@@ -75,10 +75,10 @@ const PostDetailMap = ({ post, postId }) => {
                 <div className="body">
                   <div className="img">
                     <img
-                      src="//t1.daumcdn.net/thumb/C84x76/?fname=http://t1.daumcdn.net/cfile/2170353A51B82DE005"
+                      src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230310_261%2F1678382014767ulavE_JPEG%2FMochuislefrenchcafe_f_%25281%2529.jpg"
                       width="73"
                       height="70"
-                      alt="카카오 스페이스닷원"
+                      alt="식당이름"
                     />
                   </div>
                   <div className="desc">
