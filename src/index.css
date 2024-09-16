@@ -6,4 +6,7 @@
   .headerBtn {
     @apply bg-neutral-100 rounded-xl p-2;
   }
+  .detailBtn {
+    @apply bg-sky-200 w-[100px] p-2 rounded-md mx-2 text-slate-600;
+  }
 }

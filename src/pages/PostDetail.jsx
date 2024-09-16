@@ -25,10 +25,15 @@ const PostDetail = () => {
   if (isPostError) return <div>에러가 발생했습니다 ...</div>;
 
   return (
-    <>
-      <PostDetailCard post={post} postId={postId} />
-      <PostDetailMap post={post} />
-    </>
+    <div className="grid grid-cols-2 gap-8 m-auto justify-center mt-11">
+      <div className="w-[500px]">
+        <PostDetailCard post={post} />
+      </div>
+      <div className="w-[500px]">가게사진</div>
+      <div className="col-span-2">
+        <PostDetailMap post={post} postId={postId} />
+      </div>
+    </div>
   );
 };
 
