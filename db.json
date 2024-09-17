@@ -25,5 +25,12 @@
       "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "id": "ae76",
+      "postId": "1",
+      "userId": "testj",
+      "content": "안녕하세요"
+    }
+  ]
 }
