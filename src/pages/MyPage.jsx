@@ -14,6 +14,10 @@ const MyPage = () => {
   const changeNicknameHandler = async (e) => {
     e.preventDefault();
 
+    if (user.nickname === newNickname) {
+      return alert('같은 닉네임 입니다');
+    }
+
     try {
       const { data } = await axios.patch(
         'https://moneyfulpublicpolicy.co.kr/profile',
@@ -43,21 +47,26 @@ const MyPage = () => {
     }
   };
   return (
-    <div>
-      <img style={{ width: '100px' }} src="src/img/image.png" />
-      <h5>닉네임: {user.nickname} </h5>
-      <form onSubmit={changeNicknameHandler}>
-        <label>닉네임 수정: </label>
-        <input
-          type="text"
-          value={newNickname}
-          placeholder="새 닉네임"
-          onChange={(e) => {
-            setNewNickname(e.target.value);
-          }}
-        />
-        <button>수정</button>
-      </form>
+    <div
+      className="my-0 mx-auto leading-8 bg-red-200 p-8
+"
+    >
+      <div className="flex item-center flex-col bg-blue-200">
+        <img style={{ width: '100px' }} src="src/img/image.png" />
+        <h5>닉네임: {user.nickname} </h5>
+        <form onSubmit={changeNicknameHandler}>
+          <label>닉네임 수정: </label>
+          <input
+            type="text"
+            value={newNickname}
+            placeholder="새 닉네임"
+            onChange={(e) => {
+              setNewNickname(e.target.value);
+            }}
+          />
+          <button>수정</button>
+        </form>
+      </div>
       <MyPosts />
     </div>
   );

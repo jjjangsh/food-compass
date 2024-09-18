@@ -7,7 +7,7 @@ const MyPosts = () => {
   const { user } = userStore((state) => {
     return state;
   });
-
+  console.log(user);
   const {
     data: myPosts,
     isPending,
@@ -32,9 +32,10 @@ const MyPosts = () => {
       <div>내가 작성한 게시물</div>
       {myPosts.map((myPost) => {
         return (
-          <div key={myPost.id}>
+          <div key={myPost.id} className="bg-slate-200 ">
             <h3>{myPost.title}</h3>
-            <p>{myPost.postContent}</p>
+            <p>{myPost.foodType}</p>
+            <p>{myPost.address}</p>
           </div>
         );
       })}

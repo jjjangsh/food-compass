@@ -2,9 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import KakaoMap from '../components/KakaoMap';
+import { useState } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [address, setAddress] = useState();
+  if (address) {
+    console.log(address);
+    console.log(address.La, address.Ma);
+  }
+
   // 포스트 가져와서 보여주기
   const { data, isPending, isError } = useQuery({
     queryKey: ['post'],
@@ -29,7 +36,7 @@ const Home = () => {
           <button>양식</button>
           <button>디저트</button>
         </div>
-        {/* <KakaoMap /> */}
+        {/* <KakaoMap setAddress={setAddress} /> */}
         {data.map((post) => {
           return (
             <div
