@@ -1,26 +1,48 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import KakaoMap from "../components/KakaoMap";
 import { useState } from "react";
 
 const Home = () => {
+  const [currentTab, setTab] = useState("전체");
   const navigate = useNavigate();
-  const [address, setAddress] = useState("제주특별자치도 제주시 첨단로 242");
-  if (address) {
-    console.log(address);
-  }
 
   // 포스트 가져와서 보여주기
   const { data, isPending, isError } = useQuery({
     queryKey: ["post"],
     queryFn: async () => {
       const response = await axios.get("http://localhost:4000/posts");
-      return response.data;
+      return response.data.reverse();
     },
   });
   if (isPending) return <div>가져오는 중</div>;
   if (isError) return <div>오류남</div>;
+
+  // 탭으로 post 데이터 필터링하기
+  let postsData = data;
+  switch (currentTab) {
+    case "전체":
+      postsData = data;
+      break;
+    case "한식":
+      postsData = data.filter((n) => n.foodType === "한식");
+      break;
+    case "일식":
+      postsData = data.filter((n) => n.foodType === "일식");
+      break;
+    case "중식":
+      postsData = data.filter((n) => n.foodType === "중식");
+      break;
+    case "양식":
+      postsData = data.filter((n) => n.foodType === "양식");
+      break;
+    case "카페":
+      postsData = data.filter((n) => n.foodType === "카페");
+      break;
+    default:
+      postsData = data;
+  }
+
   return (
     <>
       <button
@@ -39,15 +61,14 @@ const Home = () => {
           <button>제주도</button>
         </div>
         <div className="flex flex-row gap-7">
-          <button>전체</button>
-          <button>한식</button>
-          <button>일식</button>
-          <button>중식</button>
-          <button>양식</button>
-          <button>디저트</button>
+          <button onClick={() => setTab("전체")}>전체</button>
+          <button onClick={() => setTab("한식")}>한식</button>
+          <button onClick={() => setTab("일식")}>일식</button>
+          <button onClick={() => setTab("중식")}>중식</button>
+          <button onClick={() => setTab("양식")}>양식</button>
+          <button onClick={() => setTab("카페")}>카페</button>
         </div>
-        <KakaoMap address={address} setAddress={setAddress} />
-        {data.map((post) => {
+        {postsData.map((post) => {
           return (
             <div
               key={post.id}
