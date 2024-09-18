@@ -15,7 +15,8 @@ const MyPage = () => {
     e.preventDefault();
 
     if (user.nickname === newNickname) {
-      return alert('같은 닉네임 입니다');
+      alert('이전 닉네임과 같습니다. 다른 닉네임을 사용해주세요');
+      return setNewNickname('');
     }
 
     try {
@@ -47,11 +48,8 @@ const MyPage = () => {
     }
   };
   return (
-    <div
-      className="my-0 mx-auto leading-8 bg-red-200 p-8
-"
-    >
-      <div className="flex item-center flex-col bg-blue-200">
+    <div>
+      <div className="flex item-center flex-col bg-gray-200">
         <img style={{ width: '100px' }} src="src/img/image.png" />
         <h5>닉네임: {user.nickname} </h5>
         <form onSubmit={changeNicknameHandler}>
