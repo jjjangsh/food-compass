@@ -2,7 +2,7 @@
 import userStore from '../zustand/userStore';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { CustomOverlayMap, Map, MapMarker, ZoomControl } from 'react-kakao-maps-sdk';
+import { CustomOverlayMap, Map, MapMarker, MapTypeControl, ZoomControl } from 'react-kakao-maps-sdk';
 import { useEffect, useState } from 'react';
 
 const PostDetailMap = ({ post, postId }) => {
@@ -41,11 +41,10 @@ const PostDetailMap = ({ post, postId }) => {
       console.error(error);
     }
   };
+
   useEffect(() => {
     getCenter();
-  }, []);
-
-  console.log('coords', coords);
+  }, [post.address]);
 
   //포스트 삭제하기
   const deletePost = async () => {
@@ -58,17 +57,18 @@ const PostDetailMap = ({ post, postId }) => {
   };
 
   return (
-    <div>
-      <Map center={{ lat: coords.lat, lng: coords.lng }} style={{ width: '1000px', height: '300px' }} level={2}>
+    <div className="mt-4 mb-8">
+      <Map center={{ lat: coords.lat, lng: coords.lng }} style={{ width: '816px', height: '300px' }} level={2}>
+        <MapTypeControl position={'TOPRIGHT'} />
         <ZoomControl />
         <MapMarker position={{ lat: coords.lat, lng: coords.lng }} onClick={() => setIsOpen(true)}></MapMarker>
         {isOpen && (
           <CustomOverlayMap position={{ lat: coords.lat, lng: coords.lng }}>
             <div className="w-[288px] ">
               <div className="info">
-                <div className="pt-[5px] pb-[10px] h-[30px] bg-transparent border-b-2 text-lg font-bold">
+                <div className="pt-[5px] pb-[10px] h-[30px] bg-transparent border-b-2 text-base font-bold">
                   식당이름
-                  <div className="absolute top-[10px] right-[10px]" onClick={() => setIsOpen(false)} title="닫기">
+                  <div className="absolute top-[10px] right-[10px] " onClick={() => setIsOpen(false)} title="닫기">
                     X
                   </div>
                 </div>
