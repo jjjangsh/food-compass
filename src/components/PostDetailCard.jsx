@@ -1,42 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import userStore from '../zustand/userStore';
-
-const PostDetailCard = ({ post, postId }) => {
-  const navigate = useNavigate();
-  const { user } = userStore();
-
-  //포스트 삭제하기
-  const deletePost = async () => {
-    const confirm = window.confirm('게시글이 삭제됩니다. 삭제하시겠습니까?');
-    if (confirm) {
-      const response = await axios.delete(`http://localhost:4000/posts/${postId}`);
-      navigate('/');
-      return response;
-    }
-  };
+const PostDetailCard = ({ post }) => {
   return (
     <>
-      <div>{post.id}</div>
-      <div>{post.userId}</div>
-      <div>{post.title}</div>
-      <div>{post.postContent}</div>
-      <div>{post.foodType}</div>
-      <div>{post.address}</div>
-      {user.userId === post.userId ? (
-        <div>
-          <button onClick={deletePost}>삭제하기</button>
-          <button
-            onClick={() => {
-              navigate(`/postupdate?id=${postId}`);
-            }}
-          >
-            수정하기
-          </button>
-        </div>
-      ) : (
-        <></>
-      )}
+      <div className="p-2">{post.userId}</div>
+      <div className="border-[1px] rounded-md p-2 mb-2 mt-2">{post.title}</div>
+      <div className="border-[1px] rounded-md p-2 mb-2">{post.postContent}</div>
+      {/* <div>{post.foodType}</div> */}
+      <div className="p-2">
+        <span className="text-slate-400	mr-2">주소</span> {post.address}
+      </div>
     </>
   );
 };
