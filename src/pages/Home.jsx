@@ -6,10 +6,9 @@ import { useState } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [address, setAddress] = useState();
+  const [address, setAddress] = useState("제주특별자치도 제주시 첨단로 242");
   if (address) {
     console.log(address);
-    console.log(address.La, address.Ma);
   }
 
   // 포스트 가져와서 보여주기
@@ -33,13 +32,21 @@ const Home = () => {
       <div className="flex flex-col w-full gap-4 justify-center items-center">
         <div className="flex flex-row gap-7">
           <button>전체</button>
+          <button>서울</button>
+          <button>부산</button>
+          <button>인천</button>
+          <button>대구</button>
+          <button>제주도</button>
+        </div>
+        <div className="flex flex-row gap-7">
+          <button>전체</button>
           <button>한식</button>
           <button>일식</button>
           <button>중식</button>
           <button>양식</button>
           <button>디저트</button>
         </div>
-        <KakaoMap setAddress={setAddress} />
+        <KakaoMap address={address} setAddress={setAddress} />
         {data.map((post) => {
           return (
             <div

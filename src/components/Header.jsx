@@ -6,7 +6,7 @@ const Header = ({ children }) => {
   const { user, logout } = userStore();
   return (
     <>
-      <div className="fixed w-full bg-sky-200 h-20 p-5">
+      <div className="fixed w-full bg-sky-200 h-20 p-5 z-50">
         <div className="flex flex-row justify-between">
           <button onClick={() => navigate("/")}>로고입니다</button>
           <div className="flex flex-row gap-2 px-4">
