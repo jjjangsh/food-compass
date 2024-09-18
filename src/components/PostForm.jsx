@@ -82,6 +82,14 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
     }
   };
 
+  // KakaoMap에서 받은 주소를 formData에 저장
+  const handleAddressChange = (newAddress) => {
+    setFormData((prev) => ({
+      ...prev,
+      address: newAddress
+    }));
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -152,21 +160,10 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
             <option value="디저트">디저트</option>
           </select>
         </p>
-        <p>
-          주소 :
-          <input
-            onChange={handleChange}
-            className="ml-2 border border-black"
-            type="text"
-            name="address"
-            placeholder="서울시"
-            value={formData.address}
-          />
-        </p>
       </div>
       <div className="w-full">
         <div className="flex flex-col items-center gap-2 justify-center">
-          <KakaoMap className="w-full" />
+          <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
           <button>{isEditing ? '수정' : '게시'}</button>
         </div>
       </div>
