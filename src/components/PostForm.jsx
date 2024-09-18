@@ -126,7 +126,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
           제목 :
           <input
             onChange={handleChange}
-            className="ml-2 border border-black w-[230px]"
+            className="ml-2 border border-black w-[230px] outline-none"
             type="text"
             name="title"
             placeholder="제목"
@@ -137,7 +137,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
           내용 :
           <input
             onChange={handleChange}
-            className="ml-2 border border-black w-[230px]"
+            className="ml-2 border border-black w-[230px] outline-none"
             type="text"
             name="postContent"
             placeholder="내용"
@@ -148,7 +148,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
           카테고리:
           <select
             onChange={handleChange}
-            className="ml-2 border border-black w-[203px]"
+            className="ml-2 border border-black w-[203px] outline-none"
             name="foodType"
             value={formData.foodType}
           >
@@ -164,7 +164,9 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
       <div className="w-full">
         <div className="flex flex-col items-center gap-2 justify-center">
           <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
-          <button>{isEditing ? '수정' : '게시'}</button>
+          <button className="bg-sky-300 text-white w-[350px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80">
+            {isEditing ? '수정' : '게시'}
+          </button>
         </div>
       </div>
     </form>
