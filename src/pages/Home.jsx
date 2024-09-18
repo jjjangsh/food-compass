@@ -37,8 +37,8 @@ const Home = () => {
     case "양식":
       postsData = data.filter((n) => n.foodType === "양식");
       break;
-    case "카페":
-      postsData = data.filter((n) => n.foodType === "카페");
+    case "디저트":
+      postsData = data.filter((n) => n.foodType === "디저트");
       break;
     default:
       postsData = data;
@@ -67,7 +67,7 @@ const Home = () => {
           <button onClick={() => setTab("일식")}>일식</button>
           <button onClick={() => setTab("중식")}>중식</button>
           <button onClick={() => setTab("양식")}>양식</button>
-          <button onClick={() => setTab("카페")}>카페</button>
+          <button onClick={() => setTab("디저트")}>디저트</button>
         </div>
         {postsData.map((post) => {
           return (
