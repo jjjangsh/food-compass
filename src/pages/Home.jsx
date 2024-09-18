@@ -12,6 +12,7 @@ const Home = () => {
     queryKey: ["post"],
     queryFn: async () => {
       const response = await axios.get("http://localhost:4000/posts");
+      // 최신순으로 정렬
       return response.data.reverse();
     },
   });
