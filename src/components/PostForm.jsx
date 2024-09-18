@@ -164,7 +164,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
       <div className="w-full">
         <div className="flex flex-col items-center gap-2 justify-center">
           <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
-          <button className="bg-sky-300 text-white w-[350px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80">
+          <button className="bg-sky-200 text-black w-[350px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80">
             {isEditing ? '수정' : '게시'}
           </button>
         </div>
