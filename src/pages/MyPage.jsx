@@ -57,7 +57,7 @@ const MyPage = () => {
 
   return (
     <div className="  justify-center items-center">
-      <div className="flex justify-center items-center flex-col bg-gray-200">
+      <div className=" flex  justify-center items-center flex-col bg-gray-200">
         <img style={{ width: '150px' }} src={profileImg} />
         <h5>닉네임: {user.nickname} </h5>
         <form onSubmit={changeNicknameHandler}>
@@ -70,7 +70,9 @@ const MyPage = () => {
               setNewNickname(e.target.value);
             }}
           />
-          <button>수정</button>
+          <div>
+            <button>수정</button>
+          </div>
         </form>
       </div>
       <MyPosts />
