@@ -5,6 +5,7 @@ import KakaoMap from './KakaoMap';
 const PostForm = ({ onSubmit, isEditing, initialData }) => {
   const fileInputRef = useRef(null);
   const { user } = userStore();
+  const defaultImageUrl = 'https://www.thaistore.co.kr/410f404c7d6d8e2607786dc324ff7f1c.png';
   const [imagePreview, setImagePreview] = useState(null);
   const [formData, setFormData] = useState({
     userId: '',
@@ -64,8 +65,30 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('게시 버튼 누르고 formData', formData);
-    onSubmit(formData);
+
+    if (!formData.title.trim()) {
+      alert('제목을 입력해주세요.');
+      return;
+    }
+    if (formData.title.length > 25) {
+      alert('제목은 최대 25자까지 입력할 수 있습니다.');
+      return;
+    }
+    if (!formData.postContent.trim()) {
+      alert('내용을 입력해주세요.');
+      return;
+    }
+    if (!formData.foodType) {
+      alert('카테고리를 선택해주세요.');
+      return;
+    }
+    if (!formData.address.trim()) {
+      alert('주소를 입력해주세요.');
+      return;
+    }
+    const imageToSubmit = formData.image || defaultImageUrl;
+    onSubmit({ ...formData, image: imageToSubmit });
+
     // 초기화
     setFormData({
       userId: '',
@@ -93,9 +116,9 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col justify-center items-center w-full max-w-[500px] max-h-[calc(100vh-80px)] gap-3 p-3 pt-0"
+      className="flex flex-col justify-center items-center w-full max-w-[800px] max-h-[calc(100vh-80px)] overflow-hidden sm:overflow-visible gap-3 p-3 pt-0 mt-[-10px]"
     >
-      <div className="px-2 pb-2 flex flex-col items-center gap-2 min-w-96 border border-l-stone-300 rounded-md">
+      <div className="pb-3 flex flex-col items-center gap-2 w-[580px] min-w-96 border border-l-stone-300 rounded-md">
         {imagePreview ? (
           <>
             <img src={imagePreview} className="w-full h-full object-contain rounded-md max-w-full max-h-[250px] mt-3" />
@@ -110,18 +133,19 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
           </>
         ) : (
           <>
-            <p>사진을 업로드해주세요</p>
+            <img src={defaultImageUrl} className="pt-4 w-[305px] h-[245px]" />
+            <p className="text-xs">사진을 업로드해주세요</p>
             <input
               type="file"
               accept="image/*"
               name="image"
-              className="mt-2 w-[280px]"
+              className="mt-1 w-[280px]"
               onChange={handleChange}
               ref={fileInputRef}
             />
           </>
         )}
-        {<p className="w-[280px]">닉네임: {user?.nickname}</p>}
+        {/* {<p className="w-[280px]">닉네임: {user?.nickname}</p>} */}
         <p>
           제목 :
           <input
@@ -129,7 +153,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
             className="ml-2 border border-black w-[230px] outline-none"
             type="text"
             name="title"
-            placeholder="제목"
+            placeholder="제목을 입력하세요"
             value={formData.title}
           />
         </p>
@@ -140,7 +164,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
             className="ml-2 border border-black w-[230px] outline-none"
             type="text"
             name="postContent"
-            placeholder="내용"
+            placeholder="내용을 입력하세요"
             value={formData.postContent}
           />
         </p>
@@ -164,7 +188,10 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
       <div className="w-full">
         <div className="flex flex-col items-center gap-2 justify-center">
           <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
-          <button className="bg-sky-200 text-black w-[350px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80">
+          <button
+            type="submit"
+            className="bg-sky-200 text-black w-[280px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80"
+          >
             {isEditing ? '수정' : '게시'}
           </button>
         </div>
