@@ -144,7 +144,7 @@ const Home = () => {
                   className="flex flex-col bg-sky-50 p-3 gap-2 justify-center items-center rounded-xl hover:cursor-pointer"
                   onClick={() => navigate(`/postdetail?id=${post.id}`)}
                 >
-                  {post.img ? (
+                  {post.image ? (
                     <img src={post.image} alt={post.title} />
                   ) : (
                     <div>이미지가 없음</div>
