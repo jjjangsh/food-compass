@@ -1,3 +1,4 @@
+// SignUp.js
 import { useNavigate } from 'react-router-dom';
 import { register } from '../api/auth';
 import AuthForm from '../components/AuthForm';
@@ -17,10 +18,22 @@ const SignUp = () => {
       console.log('회원가입 에러 => ', error);
     }
   };
+
   return (
-    <div>
-      <div>
-        <h4>회원가입 페이지</h4>
+    <div className="flex items-center justify-center w-full relative top-[50px]">
+      <div className="bg-sky-200 shadow-md rounded-lg p-8 w-full max-w-md">
+        <div className="flex items-center justify-center">
+          <img
+            src="public/logo.png"
+            style={{
+              width: '150px',
+              height: '150px',
+              marginBottom: '20px',
+              backgroundColor: 'white',
+              borderRadius: '50%'
+            }}
+          />
+        </div>
         <AuthForm type="signup" onSubmit={handleSignup} />
       </div>
     </div>

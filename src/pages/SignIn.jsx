@@ -1,3 +1,4 @@
+// SignIn.js
 import AuthForm from '../components/AuthForm';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
@@ -12,7 +13,7 @@ const SignIn = () => {
       const response = await login(formData);
 
       if (response.success) {
-        alert('로그인 성공!, 메인 페이지로 이동합니다.');
+        alert('로그인 성공! 메인 페이지로 이동합니다.');
         console.log('로그인 페이지에서 테스트용 콘솔 ', response);
         setUser(response);
         navigate('/');
@@ -24,9 +25,20 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h3>로그인 페이지</h3>
+    <div className="flex items-center justify-center w-full relative top-24">
+      <div className="bg-sky-200 shadow-md rounded-lg p-8 w-full max-w-md">
+        <div className="flex items-center justify-center">
+          <img
+            src="public/logo.png"
+            style={{
+              width: '150px',
+              height: '150px',
+              marginBottom: '20px',
+              backgroundColor: 'white',
+              borderRadius: '50%'
+            }}
+          />
+        </div>
         <AuthForm type="signin" onSubmit={handleLogin} />
       </div>
     </div>

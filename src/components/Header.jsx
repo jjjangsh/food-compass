@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import userStore from "../zustand/userStore";
+import { useNavigate } from 'react-router-dom';
+import userStore from '../zustand/userStore';
+import Weather from './Weather';
 
 const Header = ({ children }) => {
   const navigate = useNavigate();
@@ -8,14 +9,12 @@ const Header = ({ children }) => {
     <>
       <div className="fixed w-full bg-sky-200 h-20 p-5 z-50">
         <div className="flex flex-row justify-between">
-          <button onClick={() => navigate("/")}>로고입니다</button>
+          <button onClick={() => navigate('/')}>로고입니다</button>
           <div className="flex flex-row gap-2 px-4">
+            <Weather />
             {user ? (
               <>
-                <button
-                  onClick={() => navigate("/mypage")}
-                  className="headerBtn"
-                >
+                <button onClick={() => navigate('/mypage')} className="headerBtn">
                   마이페이지
                 </button>
                 <button onClick={logout} className="headerBtn">
@@ -24,16 +23,10 @@ const Header = ({ children }) => {
               </>
             ) : (
               <>
-                <button
-                  onClick={() => navigate("/signin")}
-                  className="headerBtn"
-                >
+                <button onClick={() => navigate('/signin')} className="headerBtn">
                   로그인
                 </button>
-                <button
-                  onClick={() => navigate("/signup")}
-                  className="headerBtn"
-                >
+                <button onClick={() => navigate('/signup')} className="headerBtn">
                   회원가입
                 </button>
               </>
