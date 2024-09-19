@@ -26,21 +26,9 @@ const PostDetail = () => {
   if (isPostError) return <div>에러가 발생했습니다 ...</div>;
 
   return (
-    <div className="grid grid-cols-2 gap-8 m-auto justify-center mt-11">
-      <div className="w-[500px]">
-        <PostDetailCard post={post} />
-      </div>
-      <div className="w-[450px]">
-        {/* 테스트를 위한 사진 */}
-        <img
-          src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230310_261%2F1678382014767ulavE_JPEG%2FMochuislefrenchcafe_f_%25281%2529.jpg"
-          alt=""
-        />
-      </div>
-      <div className="col-span-2">
-        <PostDetailMap post={post} postId={postId} />
-      </div>
-      <Comment postId={postId} />
+    <div className="m-auto mt-8">
+      <PostDetailCard post={post} />
+      <PostDetailMap post={post} postId={postId} />
     </div>
   );
 };
