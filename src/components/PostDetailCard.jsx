@@ -24,7 +24,7 @@ const PostDetailCard = ({ post }) => {
           <span className="text-slate-400	mr-2">주소</span> {post.address}
         </div>
       </div>
-      <div className="w-[400px] ml-2 mt-14">
+      <div className="w-[400px] ml-2 mt-20">
         <img src={post.image} alt="" className="w-[400px]" />
       </div>
     </div>
