@@ -23,7 +23,7 @@ const PostWrite = () => {
   };
 
   return (
-    <div className="flex flex-col w-full justify-center items-center min-h-[calc(100vh-100px)]">
+    <div className="flex flex-col w-full justify-center items-center">
       <PostForm onSubmit={handleWriteSubmit} />
     </div>
   );
