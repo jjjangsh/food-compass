@@ -173,7 +173,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
             내용 :
             <textarea
               onChange={handleChange}
-              className="ml-2 border border-l-stone-300 rounded-md w-[230px] outline-none h-[80px] resize-none px-1"
+              className="ml-2 border border-l-stone-300 rounded-md w-[230px] outline-none h-[65px] resize-none px-1"
               type="text"
               name="postContent"
               placeholder="내용을 입력하세요"
