@@ -4,10 +4,10 @@
 
 @layer components {
   .headerBtn {
-    @apply bg-neutral-100 rounded-xl p-2;
+    @apply bg-white rounded-xl p-2 h-12;
   }
   .focusTabBtn {
-    @apply bg-sky-400 text-white p-2 rounded-xl;
+    @apply bg-sky-900 text-white p-2 rounded-xl;
   }
   .blurTabBtn {
     @apply bg-sky-100 text-black p-2 rounded-xl;

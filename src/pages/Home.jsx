@@ -22,7 +22,7 @@ const Home = () => {
 
   // 포스트 가져와서 보여주기
   const { data, isPending, isError } = useQuery({
-    queryKey: ["posts"],
+    queryKey: ["post"],
     queryFn: async () => {
       const response = await axios.get("http://localhost:4000/posts");
       // 최신순으로 정렬
@@ -92,70 +92,72 @@ const Home = () => {
 
   return (
     <>
-      <button
-        className="fixed bottom-2 left-2 bg-sky-200 w-1/5 h-10"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        위로
-      </button>
-      <button
-        className="fixed bottom-2 right-2 bg-sky-200 w-1/5 h-10"
-        onClick={() => navigate("/postwrite")}
-      >
-        게시물 추가
-      </button>
+      <div className="fixed bottom-3 right-3 flex flex-col gap-5">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/18/18529.png"
+          className="w-20 hover:cursor-pointer"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2740/2740697.png"
+          className="w-20 hover:cursor-pointer"
+          onClick={() => navigate("/postwrite")}
+        />
+      </div>
       <div className="flex flex-col w-full gap-4 justify-center items-center">
-        <div className="flex flex-row gap-7">
-          {localTabArr.map((tab, index) => {
-            return (
-              <button
-                key={index}
-                onClick={() => setLocalTab(tab)}
-                className={localTab === tab ? "focusTabBtn" : "blurTabBtn"}
-              >
-                {tab}
-              </button>
-            );
-          })}
+        <div className="flex flex-col justify-center items-center gap-4 bg-sky-500 p-5 rounded-xl">
+          <div className="flex flex-row gap-7">
+            {localTabArr.map((tab, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={() => setLocalTab(tab)}
+                  className={localTab === tab ? "focusTabBtn" : "blurTabBtn"}
+                >
+                  {tab}
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex flex-row gap-7">
+            {foodTypeTabArr.map((tab, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={() => setTab(tab)}
+                  className={currentTab === tab ? "focusTabBtn" : "blurTabBtn"}
+                >
+                  {tab}
+                </button>
+              );
+            })}
+          </div>
         </div>
-        <div className="flex flex-row gap-7">
-          {foodTypeTabArr.map((tab, index) => {
-            return (
-              <button
-                key={index}
-                onClick={() => setTab(tab)}
-                className={currentTab === tab ? "focusTabBtn" : "blurTabBtn"}
-              >
-                {tab}
-              </button>
-            );
-          })}
+        <div className="grid grid-cols-3 w-full gap-5 px-28">
+          {postsData.length > 0 ? (
+            postsData.map((post) => {
+              return (
+                <div
+                  key={post.id}
+                  className="flex flex-col bg-sky-50 p-3 gap-2 justify-center items-center rounded-xl hover:cursor-pointer"
+                  onClick={() => navigate(`/postdetail?id=${post.id}`)}
+                >
+                  {post.img ? (
+                    <img src={post.image} alt={post.title} />
+                  ) : (
+                    <div>이미지가 없음</div>
+                  )}
+                  <p>{post.title}</p>
+                  <p>{post.address}</p>
+                </div>
+              );
+            })
+          ) : (
+            <div>필터 결과가 없습니다</div>
+          )}
         </div>
-        {postsData.length > 0 ? (
-          postsData.map((post) => {
-            return (
-              <div
-                key={post.id}
-                className="flex flex-col bg-orange-100 w-3/5 p-3 gap-2 justify-center items-center rounded-xl"
-                onClick={() => navigate(`/postdetail?id=${post.id}`)}
-              >
-                <div className="flex flex-row gap-5">
-                  <p>닉네임:{post.userId}</p>
-                  <p>제목:{post.title}</p>
-                </div>
-                <p>내용:{post.postContent}</p>
-                <div className="flex flex-row gap-5">
-                  <p>카테고리:{post.foodType}</p>
-                  <p>주소:{post.address}</p>
-                </div>
-              </div>
-            );
-          })
-        ) : (
-          <div>필터 결과가 없습니다</div>
-        )}
       </div>
     </>
   );
