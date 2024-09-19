@@ -3,6 +3,7 @@ import PostDetailCard from '../components/PostDetailCard';
 import PostDetailMap from '../components/PostDetailMap';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import Comment from '../components/Comment';
 
 const PostDetail = () => {
   //포스트 아이디 가져오기
@@ -28,6 +29,7 @@ const PostDetail = () => {
     <div className="m-auto mt-8">
       <PostDetailCard post={post} />
       <PostDetailMap post={post} postId={postId} />
+      <Comment postId={postId} />
     </div>
   );
 };

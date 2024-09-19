@@ -116,5 +116,20 @@
       "image": ""
     }
   ],
+<<<<<<< HEAD
+  "comments": [
+    {
+      "id": "ae76",
+      "postId": "1",
+      "userId": "testj",
+      "content": "안녕하세요"
+    }
+  ]
+}
+=======
   "comments": []
 }
+<<<<<<< HEAD
+>>>>>>> a95499ed83b9233688eb16be0f08ae2ac8748c95
+=======
+>>>>>>> 46a744e7fe4023a3dc354c2abfbda1f4b383cc7e
