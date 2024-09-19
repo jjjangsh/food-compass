@@ -29,6 +29,7 @@ const PostDetail = () => {
     <div className="m-auto mt-8">
       <PostDetailCard post={post} />
       <PostDetailMap post={post} postId={postId} />
+      <Comment postId={postId} />
     </div>
   );
 };

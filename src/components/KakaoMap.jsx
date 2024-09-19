@@ -18,25 +18,17 @@ const KakaoMap = ({ address, setAddress }) => {
     };
     // 지도 생성하기
     const map = new kakao.maps.Map(container, options);
-
-    // 지도에 마커찍기
-    // 지도 중심에 마커 만들기
-    const marker = new kakao.maps.Marker({
-      position: map.getCenter(),
-    });
-    //마커 찍기
-    marker.setMap(map);
-
     // 주소-좌표 변환 객체를 생성합니다
     let geocoder = new kakao.maps.services.Geocoder();
     // 장소 검색 객체를 생성합니다
     let ps = new kakao.maps.services.Places();
-
-    // 키워드로 장소를 검색합니다
-    ps.keywordSearch(searchResult, placesSearchCB);
+    // 좌표로 주소 검색- 자세하게
+    const serchDetailAddFromCoords = (coords, callback) => {
+      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    };
 
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-    function placesSearchCB(data, status) {
+    const placesSearchCB = (data, status) => {
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -50,9 +42,11 @@ const KakaoMap = ({ address, setAddress }) => {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
       }
-    }
+    };
 
-    // 마커
+    // 키워드로 장소를 검색합니다
+    ps.keywordSearch(searchResult, placesSearchCB);
+    // 검색결과 마커
     const displayMarker = (place) => {
       let marker = new kakao.maps.Marker({
         map: map,
@@ -64,6 +58,14 @@ const KakaoMap = ({ address, setAddress }) => {
         setAddress(place.address_name);
       });
     };
+
+    // 지도에 마커찍기
+    // 지도 중심에 마커 만들기
+    const marker = new kakao.maps.Marker({
+      position: map.getCenter(),
+    });
+    //마커 찍기
+    marker.setMap(map);
 
     // 클릭으로 마커 이동하기 + 마커 찍은 곳 정보 가져가기
     kakao.maps.event.addListener(map, "click", (mouseEvent) => {
@@ -79,11 +81,6 @@ const KakaoMap = ({ address, setAddress }) => {
       // 클릭한 위치로 마커 이동하기
       marker.setPosition(latIng);
     });
-
-    // 좌표로 주소 검색- 자세하게
-    const serchDetailAddFromCoords = (coords, callback) => {
-      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-    };
   }, [searchResult]);
 
   return (

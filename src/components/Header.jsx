@@ -41,7 +41,7 @@ const Header = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex w-full pt-24">{children}</div>
+      <div className="flex w-full py-24">{children}</div>
     </>
   );
 };
