@@ -64,8 +64,32 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('게시 버튼 누르고 formData', formData);
+
+    if (!formData.title.trim()) {
+      alert('제목을 입력해주세요.');
+      return;
+    }
+    if (formData.title.length > 25) {
+      alert('제목은 최대 25자까지 입력할 수 있습니다.');
+      return;
+    }
+    if (!formData.postContent.trim()) {
+      alert('내용을 입력해주세요.');
+      return;
+    }
+    if (!formData.foodType) {
+      alert('카테고리를 선택해주세요.');
+      return;
+    }
+    if (!formData.address.trim()) {
+      alert('주소를 입력해주세요.');
+      return;
+    }
+
+    console.log('게시 버튼 누르고 formData', formData);
+
     onSubmit(formData);
+
     // 초기화
     setFormData({
       userId: '',
@@ -164,7 +188,10 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
       <div className="w-full">
         <div className="flex flex-col items-center gap-2 justify-center">
           <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
-          <button className="bg-sky-200 text-black w-[350px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80">
+          <button
+            type="submit"
+            className="bg-sky-200 text-black w-[350px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80"
+          >
             {isEditing ? '수정' : '게시'}
           </button>
         </div>
