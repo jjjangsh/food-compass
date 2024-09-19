@@ -6,6 +6,12 @@
   .headerBtn {
     @apply bg-neutral-100 rounded-xl p-2;
   }
+  .focusTabBtn {
+    @apply bg-sky-400 text-white p-2 rounded-xl;
+  }
+  .blurTabBtn {
+    @apply bg-sky-100 text-black p-2 rounded-xl;
+  }
   .detailBtn {
     @apply bg-sky-200 w-[100px] p-2 rounded-md mx-2 text-slate-600;
   }
