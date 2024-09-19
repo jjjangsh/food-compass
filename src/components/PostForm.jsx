@@ -13,7 +13,8 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
     postContent: '',
     foodType: '',
     address: '',
-    image: ''
+    image: '',
+    location: ''
   });
 
   // userId 업데이트
@@ -42,7 +43,6 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
     // 이미지 처리
     if (name === 'image' && files && files[0]) {
       const file = files[0];
-
       // FileReader 생성
       const reader = new FileReader();
       // FileReader가 파일을 읽게함
@@ -61,6 +61,21 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
         [name]: value
       }));
     }
+  };
+
+  const cityName = (address) => {
+    const part = address.split(' ');
+    return part[0];
+  };
+
+  // KakaoMap에서 받은 주소를 formData에 저장
+  const handleAddressChange = (newAddress) => {
+    const city = cityName(newAddress);
+    setFormData((prev) => ({
+      ...prev,
+      address: newAddress,
+      location: city
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -96,21 +111,14 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
       postContent: '',
       foodType: '',
       address: '',
-      image: ''
+      image: '',
+      location: ''
     });
     setImagePreview(null);
     // 파일 인풋 필드 초기화
     if (fileInputRef.current) {
       fileInputRef.current.value = ''; // 파일 입력 필드 초기화
     }
-  };
-
-  // KakaoMap에서 받은 주소를 formData에 저장
-  const handleAddressChange = (newAddress) => {
-    setFormData((prev) => ({
-      ...prev,
-      address: newAddress
-    }));
   };
 
   return (
