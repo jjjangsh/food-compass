@@ -27,8 +27,6 @@ const KakaoMap = ({ address, setAddress }) => {
       geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
     };
 
-    // 키워드로 장소를 검색합니다
-    ps.keywordSearch(searchResult, placesSearchCB);
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
     const placesSearchCB = (data, status) => {
       if (status === kakao.maps.services.Status.OK) {
@@ -45,6 +43,9 @@ const KakaoMap = ({ address, setAddress }) => {
         map.setBounds(bounds);
       }
     };
+
+    // 키워드로 장소를 검색합니다
+    ps.keywordSearch(searchResult, placesSearchCB);
     // 검색결과 마커
     const displayMarker = (place) => {
       let marker = new kakao.maps.Marker({
