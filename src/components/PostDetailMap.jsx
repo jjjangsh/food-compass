@@ -2,7 +2,7 @@
 import userStore from '../zustand/userStore';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { CustomOverlayMap, Map, MapMarker, ZoomControl } from 'react-kakao-maps-sdk';
+import { CustomOverlayMap, Map, MapMarker, MapTypeControl, ZoomControl } from 'react-kakao-maps-sdk';
 import { useEffect, useState } from 'react';
 
 const PostDetailMap = ({ post, postId }) => {
@@ -14,6 +14,7 @@ const PostDetailMap = ({ post, postId }) => {
   const create = async () => {
     // 주소-좌표 변환 객체를 생성합니다
     const geocoder = new kakao.maps.services.Geocoder();
+
     // 가게 주소
     const address = post.address;
     // Promise로 감싸서 비동기 처리
@@ -41,11 +42,10 @@ const PostDetailMap = ({ post, postId }) => {
       console.error(error);
     }
   };
+
   useEffect(() => {
     getCenter();
-  }, []);
-
-  console.log('coords', coords);
+  }, [post.address]);
 
   //포스트 삭제하기
   const deletePost = async () => {
@@ -58,46 +58,41 @@ const PostDetailMap = ({ post, postId }) => {
   };
 
   return (
-    <div>
-      <Map center={{ lat: coords.lat, lng: coords.lng }} style={{ width: '1000px', height: '300px' }} level={2}>
+    <div className="mt-4 mb-8 ">
+      <Map center={{ lat: coords.lat, lng: coords.lng }} style={{ width: '816px', height: '300px' }} level={2}>
+        <MapTypeControl position={'TOPRIGHT'} />
         <ZoomControl />
         <MapMarker position={{ lat: coords.lat, lng: coords.lng }} onClick={() => setIsOpen(true)}></MapMarker>
         {isOpen && (
           <CustomOverlayMap position={{ lat: coords.lat, lng: coords.lng }}>
-            <div className="w-[288px] ">
+            <div className="w-[288px] bg-white pb-2">
               <div className="info">
-                <div className="pt-[5px] pb-[10px] h-[30px] bg-transparent border-b-2 text-lg font-bold">
-                  식당이름
-                  <div className="absolute top-[10px] right-[10px]" onClick={() => setIsOpen(false)} title="닫기">
+                <div className="pt-[5px] pb-[10px] h-[30px] bg-transparent border-b-2 text-base font-bold pl-2">
+                  #{post.foodType}
+                  <div
+                    className="absolute top-[5px] right-[10px] text-sm"
+                    onClick={() => setIsOpen(false)}
+                    title="닫기"
+                  >
                     X
                   </div>
                 </div>
                 <div className="body">
-                  <div className="img">
-                    <img
-                      src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230310_261%2F1678382014767ulavE_JPEG%2FMochuislefrenchcafe_f_%25281%2529.jpg"
-                      width="73"
-                      height="70"
-                      alt="식당이름"
-                    />
+                  <div className="m-2">
+                    <img src={post.image} width="73" height="70" alt="식당이름" />
                   </div>
-                  <div className="desc">
-                    <div className="ellipsis">{post.address}</div>
-                    <div>
-                      <a href="https://www.kakaocorp.com/main" target="_blank" className="link" rel="noreferrer">
-                        홈페이지
-                      </a>
-                    </div>
+                  <div>
+                    <span className="text-xs m-2">주소 :</span>
+                    <span className="text-xs text-slate-500">{post.address}</span>
                   </div>
                 </div>
               </div>
             </div>
-            ;
           </CustomOverlayMap>
         )}
       </Map>
       {user.userId === post.userId ? (
-        <div className="text-right m-7">
+        <div className="text-right m-4">
           <button
             onClick={() => {
               navigate(`/postupdate?id=${postId}`);
