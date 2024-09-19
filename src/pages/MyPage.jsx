@@ -9,7 +9,6 @@ const MyPage = () => {
   const { user, setUser } = userStore((state) => {
     return state;
   });
-  console.log(user);
 
   const changeNicknameHandler = async (e) => {
     e.preventDefault();
@@ -35,8 +34,6 @@ const MyPage = () => {
         alert('닉네임 변경 성공');
         const newUser = { ...user, nickname: data.nickname };
         setUser(newUser);
-        console.log(user);
-        // return문에서 바로 data.nickname을 보여주면 안되냐? 안된다 접근 불가다 이 data는 해당 스코프내에서만 사용 가능
         setNewNickname('');
       } else {
         alert('닉네임 변경 실패');
@@ -47,10 +44,21 @@ const MyPage = () => {
       console.log('error', error);
     }
   };
+
+  const profileImgsArr = [
+    'src/assets/image1.png',
+    'src/assets/image2.png',
+    'src/assets/image3.png',
+    'src/assets/image4.png',
+    'src/assets/image5.png'
+  ];
+  const randomIndex = Math.floor(Math.random() * profileImgsArr.length);
+  const profileImg = profileImgsArr[randomIndex];
+
   return (
     <div>
       <div className="flex item-center flex-col bg-gray-200">
-        <img style={{ width: '100px' }} src="src/img/image.png" />
+        <img style={{ width: '100px' }} src={profileImg} />
         <h5>닉네임: {user.nickname} </h5>
         <form onSubmit={changeNicknameHandler}>
           <label>닉네임 수정: </label>
