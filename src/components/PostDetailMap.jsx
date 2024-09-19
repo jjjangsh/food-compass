@@ -12,9 +12,8 @@ const PostDetailMap = ({ post, postId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const create = async () => {
-    // 주소-좌표 변환 객체를 생성합니다
+    // 주소-좌표 변환 객체를 생성
     const geocoder = new kakao.maps.services.Geocoder();
-
     // 가게 주소
     const address = post.address;
     // Promise로 감싸서 비동기 처리
@@ -92,7 +91,7 @@ const PostDetailMap = ({ post, postId }) => {
         )}
       </Map>
       {user.userId === post.userId ? (
-        <div className="text-right m-4">
+        <div className="text-right mt-4">
           <button
             onClick={() => {
               navigate(`/postupdate?id=${postId}`);
