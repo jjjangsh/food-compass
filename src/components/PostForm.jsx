@@ -190,7 +190,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
           <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
           <button
             type="submit"
-            className="bg-sky-200 text-black w-[350px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80"
+            className="bg-sky-200 text-black w-[360px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80"
           >
             {isEditing ? '수정' : '게시'}
           </button>
