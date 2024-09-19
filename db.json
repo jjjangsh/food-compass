@@ -1,52 +1,119 @@
 {
   "posts": [
     {
-      "id": "1",
-      "userId": "홍길동",
-      "title": "이태리재",
-      "postContent": "예전부터 북촌 이탈리안 맛집으로 유명했던 곳인데 풍자 또간집 출연으로 다시금 눈길을 끌고있다지 머예여 내가 먼저 알았는디 ! 여기오면 일단 트러플 감자 뇨끼는 무조건 시키세욥 뇨끼 러버들은 와야하는 곳 ! ",
-      "foodType": "양식",
-      "address": "서울 종로구 율곡로1길 74-9 1층 (우)03062"
+      "id": "3",
+      "userId": "minn",
+      "title": "윤시커피로스터스",
+      "postContent": "022 IMAB 에스프레소 콩쿠르 우승 2022 IMAB 에스프레소 콩쿠르 우승 2022 IMAR 로스팅 콩쿠르 5위한 커피 집",
+      "foodType": "카페",
+      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
     },
     {
       "id": "2",
-      "userId": "홍길순",
+      "userId": "minn",
       "title": "유럽감성 대형카페 호수뷰 모큐슈라",
       "postContent": "공릉호라는 호수가 앞에 보이는 카페로 서울에서 조금 벗어나면 있는 파주 대형카페예요 입구부터 초대형 스크린이 있고 예식장 분위기의 웅장한 외관이에요 데이트 장소로 딱이니 차타고 드라이브 할겸 와보세요",
       "foodType": "디저트",
       "address": "경기 파주시 조리읍 기곡길 138 1층"
     },
     {
-      "id": "3",
+      "id": "36eb",
       "userId": "heerok",
-      "title": "커피맛집 찾았어요!",
-      "postContent": "에스프레소 콩쿠르 우승한 집이래요! 일산에서 30년 넘게 살면서 딱 맘에 드는 커피숍이 없었는데 드디어 제 입맛에 맘에 드는 커피숍을 발견했어요.이쪽으로는 지나갈 일이 딱히 없어 언제 생겼는지 모르겠는데 아침 이른 시간에 방문했는데도 많은 사람들의 발길이 끈이질 않은걸 봐서 다들 맛있다고 생각하는건 같나봐요. 어쩐지 맛있더라 다들 한번 맛보러 가세요!",
-      "foodType": "디저트",
-      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
+      "title": "테스트",
+      "postContent": "테스트",
+      "foodType": "한식",
+      "address": "",
+      "image": ""
     },
     {
-      "id": "3",
-      "userId": "minn",
-      "title": "윤시커피로스터스",
-      "postContent": "022 IMAB 에스프레소 콩쿠르 우승 2022 IMAB 에스프레소 콩쿠르 우승 2022 IMAR 로스팅 콩쿠르 5위한 커피 집",
-      "foodType": "카페",
-      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
+      "id": "709c",
+      "userId": "heerok",
+      "title": "테스트테스트",
+      "postContent": "테스트테스트",
+      "foodType": "한식",
+      "address": "",
+      "image": ""
     },
     {
-      "id": "3",
-      "userId": "minn",
-      "title": "윤시커피로스터스",
-      "postContent": "022 IMAB 에스프레소 콩쿠르 우승 2022 IMAB 에스프레소 콩쿠르 우승 2022 IMAR 로스팅 콩쿠르 5위한 커피 집",
-      "foodType": "카페",
-      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
+      "id": "e3a3",
+      "userId": "heerok",
+      "title": "테스트",
+      "postContent": "테스트",
+      "foodType": "중식",
+      "address": "서울 중구 을지로2가 181",
+      "image": ""
     },
     {
-      "id": "2",
-      "userId": "minn",
-      "title": "유럽감성 대형카페 호수뷰 모큐슈라",
-      "postContent": "공릉호라는 호수가 앞에 보이는 카페로 서울에서 조금 벗어나면 있는 파주 대형카페예요 입구부터 초대형 스크린이 있고 예식장 분위기의 웅장한 외관이에요 데이트 장소로 딱이니 차타고 드라이브 할겸 와보세요",
-      "foodType": "디저트",
-      "address": "경기 파주시 조리읍 기곡길 138 1층"
+      "id": "257c",
+      "userId": "heerok",
+      "title": "테스트",
+      "postContent": "테스트",
+      "foodType": "중식",
+      "address": "인천 중구 을왕동 810-204",
+      "image": ""
+    },
+    {
+      "id": "537b",
+      "userId": "heerok",
+      "title": "테스트",
+      "postContent": "테스트",
+      "foodType": "중식",
+      "address": "대구 북구 산격동 1485",
+      "image": ""
+    },
+    {
+      "id": "77cc",
+      "userId": "heerok",
+      "title": "테스트",
+      "postContent": "테스트",
+      "foodType": "한식",
+      "address": "경기 수원시 장안구 영화동 320-2",
+      "image": ""
+    },
+    {
+      "id": "caed",
+      "userId": "heerok",
+      "title": "테스트",
+      "postContent": "테스트",
+      "foodType": "일식",
+      "address": "서울 종로구 서린동 148",
+      "image": ""
+    },
+    {
+      "id": "27bd",
+      "userId": "heerok",
+      "title": "일식 경기",
+      "postContent": "일식 경기",
+      "foodType": "일식",
+      "address": "경기 수원시 장안구 영화동 320-2",
+      "image": ""
+    },
+    {
+      "id": "0050",
+      "userId": "heerok",
+      "title": "일식 서울",
+      "postContent": "일식 서울",
+      "foodType": "일식",
+      "address": "서울 종로구 서린동 148",
+      "image": ""
+    },
+    {
+      "id": "5ed6",
+      "userId": "heerok",
+      "title": "일식 제주도",
+      "postContent": "일식 제주도",
+      "foodType": "일식",
+      "address": "제주특별자치도 제주시 영평동 2181",
+      "image": ""
+    },
+    {
+      "id": "25a1",
+      "userId": "heerok",
+      "title": "일식 대구",
+      "postContent": "일식 대구",
+      "foodType": "일식",
+      "address": "대구 남구 대명동",
+      "image": ""
     }
   ],
   "comments": []
