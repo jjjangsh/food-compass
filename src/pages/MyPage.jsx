@@ -56,9 +56,9 @@ const MyPage = () => {
   const profileImg = profileImgsArr[randomIndex];
 
   return (
-    <div>
-      <div className="flex item-center flex-col bg-gray-200">
-        <img style={{ width: '100px' }} src={profileImg} />
+    <div className="  justify-center items-center">
+      <div className="flex justify-center items-center flex-col bg-gray-200">
+        <img style={{ width: '150px' }} src={profileImg} />
         <h5>닉네임: {user.nickname} </h5>
         <form onSubmit={changeNicknameHandler}>
           <label>닉네임 수정: </label>

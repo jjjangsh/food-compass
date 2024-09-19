@@ -40,9 +40,8 @@ const MyPosts = () => {
               navigate(`/postdetail?id=${myPost.id}`);
             }}
             key={myPost.id}
-            className="cursor-pointer grid grid-cols-2 gap-8 m-auto justify-center border-[3px]"
           >
-            <div className="w-[500px] mt-5 ">
+            <div className="w-[500px] mt-5 justify-center items-center cursor-pointer  bg-sky-200 rounded-xl">
               <div className="p-2">{myPost.userId}</div>
               <div className="border-[1px] rounded-md p-2 mb-2 mt-2">{myPost.title}</div>
               <div className="border-[1px] rounded-md p-2 mb-2">{myPost.postContent}</div>
