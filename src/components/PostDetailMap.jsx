@@ -58,7 +58,7 @@ const PostDetailMap = ({ post, postId }) => {
 
   return (
     <div className="mt-4 mb-8 ">
-      <Map center={{ lat: coords.lat, lng: coords.lng }} style={{ width: '816px', height: '300px' }} level={2}>
+      <Map center={{ lat: coords.lat, lng: coords.lng }} style={{ width: '860px', height: '300px' }} level={2}>
         <MapTypeControl position={'TOPRIGHT'} />
         <ZoomControl />
         <MapMarker position={{ lat: coords.lat, lng: coords.lng }} onClick={() => setIsOpen(true)}></MapMarker>
