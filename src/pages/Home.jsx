@@ -22,7 +22,7 @@ const Home = () => {
 
   // 포스트 가져와서 보여주기
   const { data, isPending, isError } = useQuery({
-    queryKey: ["post"],
+    queryKey: ["posts"],
     queryFn: async () => {
       const response = await axios.get("http://localhost:4000/posts");
       // 최신순으로 정렬
