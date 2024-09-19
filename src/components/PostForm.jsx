@@ -116,9 +116,9 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col justify-center items-center w-full max-w-[500px] max-h-[calc(100vh-80px)] overflow-hidden gap-3 p-3 pt-0 mt-[-30px]"
+      className="flex flex-col justify-center items-center w-full max-w-[800px] max-h-[calc(100vh-80px)] overflow-hidden sm:overflow-visible gap-3 p-3 pt-0 mt-[-10px]"
     >
-      <div className="pb-3 flex flex-col items-center gap-2 min-w-96 border border-l-stone-300 rounded-md">
+      <div className="pb-3 flex flex-col items-center gap-2 w-[580px] min-w-96 border border-l-stone-300 rounded-md">
         {imagePreview ? (
           <>
             <img src={imagePreview} className="w-full h-full object-contain rounded-md max-w-full max-h-[250px] mt-3" />
@@ -133,7 +133,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
           </>
         ) : (
           <>
-            <img src={defaultImageUrl} className="pt-4 w-[270px] h-[230px]" />
+            <img src={defaultImageUrl} className="pt-4 w-[305px] h-[245px]" />
             <p className="text-xs">사진을 업로드해주세요</p>
             <input
               type="file"
@@ -190,7 +190,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
           <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
           <button
             type="submit"
-            className="bg-sky-200 text-black w-[360px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80"
+            className="bg-sky-200 text-black w-[280px] h-8 rounded-lg shadow-lg transition-opacity duration-300 hover:opacity-80"
           >
             {isEditing ? '수정' : '게시'}
           </button>
