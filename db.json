@@ -26,6 +26,26 @@
       "foodType": "일식",
       "address": "경기 안양시 동안구 관양동 1599-3",
       "image": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230603_51%2F1685719624487YsdH5_JPEG%2FKakaoTalk_20230518_181402994_09.jpg"
+    },
+    {
+      "id": "4eaa",
+      "userId": "testj",
+      "title": "여기 꼭 가보세요~",
+      "postContent": "쌀국수 맛집입니다",
+      "foodType": "한식",
+      "address": "서울 서대문구 창천동 62-9",
+      "image": "https://lh3.googleusercontent.com/proxy/KPevjP570HfRzGfgW-FPYGjj9K4ha0mcmNBRILfH8M5SfQbRboMCoJGy-8weG3hb6pyvwF74KF8AU8AyapMGV5Nzkk62KT6-uPLyTVBl1yo3VF3Eqf6S_SVT_9zMqcBtBzZxP1icqOj0xcko5L699QKn346iIYgR-hnZMQ",
+      "location": "서울"
+    },
+    {
+      "id": "28d4",
+      "userId": "testj",
+      "title": "삼각지역 샤브샤브",
+      "postContent": "샤브샤브 찐맛집",
+      "foodType": "한식",
+      "address": "서울 용산구 용산동3가 5-7",
+      "image": "https://d12zq4w4guyljn.cloudfront.net/750_750_20240818052706873_photo_533c6cd51e0c.jpg",
+      "location": "서울"
     }
   ],
   "comments": [

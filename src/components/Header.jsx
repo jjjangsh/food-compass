@@ -7,7 +7,7 @@ const Header = ({ children }) => {
   const { user, logout } = userStore();
   return (
     <>
-      <div className="fixed w-full bg-sky-200 h-24 z-50">
+      <div className="fixed w-full bg-orange-500 h-24 z-50">
         <div className="flex flex-row justify-between p-2">
           <img
             onClick={() => navigate('/')}
@@ -41,7 +41,7 @@ const Header = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex w-full py-28">{children}</div>
+      <div className="flex w-full justify-center py-28">{children}</div>
     </>
   );
 };

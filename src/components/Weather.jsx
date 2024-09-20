@@ -51,7 +51,7 @@ const Weather = () => {
   return (
     <header className="flex items-center space-x-4">
       <div>
-        <p>
+        <p className="font-bold">
           {weatherCity} {main.temp}°C {weatherDetails[0].description}
         </p>
       </div>

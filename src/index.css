@@ -16,3 +16,7 @@
     @apply bg-sky-200 w-[100px] p-2 rounded-md mx-2 text-slate-600;
   }
 }
+
+body {
+  background-color: rgb(255, 243, 231);
+}
