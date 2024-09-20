@@ -45,7 +45,6 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
       const file = files[0];
       // FileReader 생성
       const reader = new FileReader();
-      // FileReader가 파일을 읽게함
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         const imgUrl = reader.result;
@@ -115,77 +114,81 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
       location: ''
     });
     setImagePreview(null);
-    // 파일 인풋 필드 초기화
     if (fileInputRef.current) {
-      fileInputRef.current.value = ''; // 파일 입력 필드 초기화
+      fileInputRef.current.value = '';
     }
   };
 
   return (
-    <div className="flex justify-center items-center w-full max-h-screen max-w-[800px] mt-[-8px]">
+    <div className="flex justify-center items-center w-full max-h-screen max-w-[800px] mt-[140px] mb-[70px]">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center w-full max-w-[800px] max-h-full overflow-hidden sm:overflow-visible gap-3"
+        className="flex flex-col justify-center items-center w-full max-w-[500px] gap-4 p-4 shadow-lg shadow-orange-200 rounded-lg"
       >
-        <div className="pb-3 flex flex-col items-center gap-2 w-[580px] min-w-96 border border-l-stone-300 rounded-md">
+        <div className="pb-4 w-full flex flex-col items-center gap-5 rounded-md p-4">
           {imagePreview ? (
-            <div className="rounded-lg overflow-x-hidden">
+            <div className="w-full flex flex-col items-center gap-3">
               <img
                 src={imagePreview}
-                className="w-full h-full object-contain max-w-full max-h-[240px] mt-3 rounded-lg"
+                alt="preview"
+                className="rounded-lg w-full h-[255px] max-h-[350px] object-cover"
               />
               <input
                 type="file"
                 accept="image/*"
                 name="image"
-                className="mt-2 w-[280px]"
+                className="mt-3 max-w-xs w-full mr-auto"
                 onChange={handleChange}
                 ref={fileInputRef}
               />
             </div>
           ) : (
-            <div className="pt-3 flex flex-col items-center">
-              <img src={defaultImageUrl} className="w-[305px] h-[210px] rounded-lg object-cover" />
-              <p className="text-xs py-2">사진을 업로드해주세요</p>
+            <div className="w-full text-center">
+              <img
+                src={defaultImageUrl}
+                alt="default"
+                className="w-[450px] h-[255px] object-cover rounded-lg mx-auto"
+              />
+              <p className="text-xs mt-2 text-gray-600">사진을 업로드해주세요</p>
               <input
                 type="file"
                 accept="image/*"
                 name="image"
-                className="mt-1 w-[280px]"
+                className="mt-2 w-full cursor-pointer text-gray-600"
                 onChange={handleChange}
                 ref={fileInputRef}
               />
             </div>
           )}
-          <p>
-            제목 :
+          <div className="w-full">
+            <label className="block mb-1">제목</label>
             <input
               onChange={handleChange}
-              className="ml-2 border border-l-stone-300 rounded-md w-[230px] outline-none px-1"
+              className="text-gray-500 border border-orange-200 rounded-md w-full px-3 py-2 outline-none focus:border-orange-400 font-light"
               type="text"
               name="title"
               placeholder="제목을 입력하세요"
               value={formData.title}
             />
-          </p>
+          </div>
 
-          <p className="flex">
-            내용 :
+          <div className="w-full">
+            <label className="block mb-1">내용</label>
             <textarea
               onChange={handleChange}
-              className="ml-2 border border-l-stone-300 rounded-md w-[230px] outline-none h-[65px] resize-none px-1"
-              type="text"
+              className="text-gray-500 border border-orange-200 rounded-md w-full px-3 py-2 outline-none resize-none focus:border-orange-400 font-light"
               name="postContent"
               placeholder="내용을 입력하세요"
               value={formData.postContent}
+              rows="4"
             />
-          </p>
+          </div>
 
-          <p>
-            카테고리:
+          <div className="w-full">
+            <label className="block mb-1">카테고리</label>
             <select
               onChange={handleChange}
-              className="ml-2 border border-l-stone-300 rounded-md w-[203px] outline-none px-1"
+              className="font-light border border-orange-200 rounded-md w-full px-3 py-2 outline-none focus:border-orange-400 text-gray-500"
               name="foodType"
               value={formData.foodType}
             >
@@ -196,19 +199,18 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
               <option value="양식">양식</option>
               <option value="디저트">디저트</option>
             </select>
-          </p>
-        </div>
-        <div className="w-full">
-          <div className="flex flex-col items-center gap-2 justify-center">
-            <KakaoMap address={formData.address} setAddress={handleAddressChange} className="w-full" />
-            <button
-              type="submit"
-              className="bg-sky-200 text-black w-[280px] h-8 rounded-lg shadow-lg transition-colors duration-500 hover:bg-sky-300"
-            >
-              {isEditing ? '수정' : '게시'}
-            </button>
           </div>
         </div>
+
+        <div className="w-full flex flex-col items-center gap-5 mt-2">
+          <KakaoMap className="w-full" address={formData.address} setAddress={handleAddressChange} />
+        </div>
+        <button
+          type="submit"
+          className="font-light bg-orange-500 text-white w-full py-2 rounded-lg shadow-md hover:bg-orange-600 transition-colors duration-500"
+        >
+          {isEditing ? '수정' : '게시'}
+        </button>
       </form>
     </div>
   );
