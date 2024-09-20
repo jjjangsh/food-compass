@@ -64,7 +64,7 @@ const PostDetailMap = ({ post, postId }) => {
         <MapMarker position={{ lat: coords.lat, lng: coords.lng }} onClick={() => setIsOpen(true)}></MapMarker>
         {isOpen && (
           <CustomOverlayMap position={{ lat: coords.lat, lng: coords.lng }}>
-            <div className="w-[288px] bg-white pb-2">
+            <div className="w-[288px] bg-white pb-2 border-2">
               <div className="info">
                 <div className="pt-[5px] pb-[10px] h-[30px] bg-transparent border-b-2 text-base font-bold pl-2">
                   #{post.foodType}
@@ -96,11 +96,11 @@ const PostDetailMap = ({ post, postId }) => {
             onClick={() => {
               navigate(`/postupdate?id=${postId}`);
             }}
-            className=" detailBtn"
+            className=" detailBtn hover:bg-sky-300 hover:text-white"
           >
             수정하기
           </button>
-          <button onClick={deletePost} className=" detailBtn">
+          <button onClick={deletePost} className=" detailBtn hover:bg-rose-400 hover:text-white">
             삭제하기
           </button>
         </div>
