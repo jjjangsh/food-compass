@@ -52,7 +52,7 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
 
   return (
     <div className="">
-      <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex mt-16 mx-auto justify-items-center p-3 px-auto">
+      <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-3 mx-auto text-center justify-items-center p-3">
         <p>
           지역: {localTab || '전체'} & 음식: {currentTab || '전체'}
         </p>
