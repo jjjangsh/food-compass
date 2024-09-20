@@ -16,10 +16,12 @@ const PostDetailCard = ({ post }) => {
           <img src={profileImage} alt="profileImage" className="w-10 h-10 mr-4 rounded-full" />
           <span className="text-lg pt-2 text-black">{post.userId}</span>
         </div>
-        <span className="font-bold m-2">제목</span>
-        <div className="border-[1px] rounded-md border-gray-300 p-2 mb-4 mt-2">{post.title}</div>
+        <span className="font-bold m-2 bg">제목</span>
+        <div className="border-[1px] rounded-md border-gray-300 p-2 mb-4 mt-2 bg-white">{post.title}</div>
         <span className="m-2 font-bold">내용</span>
-        <div className="border-[1px] rounded-md border-gray-300 p-2 mb-2 mt-2 h-[200px]">{post.postContent}</div>
+        <div className="border-[1px] rounded-md border-gray-300 p-2 mb-2 mt-2 h-[200px] bg-white">
+          {post.postContent}
+        </div>
         <div className="p-2">
           <span className="text-slate-400	mr-2">주소</span> {post.address}
         </div>

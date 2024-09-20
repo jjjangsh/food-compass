@@ -23,7 +23,7 @@ const Comment = ({ postId }) => {
     queryFn: () => getCommentCount(postId)
   });
 
-  const totalPages = Math.ceil(totalCommentsCount / limit);
+  const totalPages = Math.max(1, Math.ceil(totalCommentsCount / limit));
 
   // postId에 해당하는 댓글들 페이지처리 해서 가져오는 useQuery
   const {
@@ -73,6 +73,7 @@ const Comment = ({ postId }) => {
     });
 
     setCommentContent('');
+    setPage(1);
   };
 
   // 댓글 수정 함수
