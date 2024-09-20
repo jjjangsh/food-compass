@@ -9,7 +9,7 @@ export const getComments = async (postId, page, limit) => {
       _per_page: limit
     }
   });
-  return response.data.data;
+  return response.data.data || [];
 }
 
 // 특정 postId의 댓글 수만 가져오는 API
