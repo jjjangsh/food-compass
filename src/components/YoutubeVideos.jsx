@@ -51,9 +51,14 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
   };
 
   return (
-    <div>
-      <p>YoutubeVideos</p>
-      <div className="grid grid-cols-3 w-full gap-5 px-28">
+    <div className="">
+      <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-3 mx-auto text-center justify-items-center p-3">
+        <p>
+          지역: {localTab || '전체'} & 음식: {currentTab || '전체'}
+        </p>
+        <p className="ml-6"> 맛집 추천 영상</p>
+      </div>
+      <div className="grid grid-cols-3 w-full mt-6  gap-12 mx-10 ">
         {videoData.map((video) => {
           return (
             <iframe

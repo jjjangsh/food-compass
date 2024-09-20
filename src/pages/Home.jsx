@@ -84,7 +84,7 @@ const Home = () => {
                   지역
                 </option>
                 {localTabArr.map((tab, index) => (
-                  <option key={index} value={tab}>
+                  <option key={tab} value={tab}>
                     {tab}
                   </option>
                 ))}
@@ -98,13 +98,17 @@ const Home = () => {
                   음식
                 </option>
                 {foodTypeTabArr.map((tab, index) => (
-                  <option key={index} value={tab}>
+                  <option key={tab} value={tab}>
                     {tab}
                   </option>
                 ))}
               </select>
             </div>
           </div>
+        </div>
+        {/* <YoutubeVideos localTab={localTab} currentTab={currentTab} /> */}
+        <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-3 mx-auto text-center justify-items-center p-3">
+          내 게시물
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-8 px-4 md:px-16 py-10 justify-items-center">
           {data.pages.map((page) => {

@@ -32,7 +32,7 @@ const MyPosts = () => {
 
   return (
     <>
-      <div className=" border-solid border-black  h-16 flex items-center justify-center text-2xl mt-16 mb-5">
+      <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-8 mx-auto text-center justify-items-center p-3">
         내가 작성한 게시물
       </div>
 
@@ -44,13 +44,18 @@ const MyPosts = () => {
                 navigate(`/postdetail?id=${myPost.id}`);
               }}
               key={myPost.id}
-              className="flex flex-col bg-sky-50 p-3 gap-2 justify-center items-center rounded-xl hover:cursor-pointer"
+              className="flex flex-col w-full max-w-sm border border-gray-300 bg-white shadow-md p-4 gap-3 justify-start items-center rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
             >
-              {myPost.image ? <img src={myPost.image} alt={myPost.tite} /> : <img src="src/assets/image.png" />}
+              {myPost.image ? (
+                <img src={myPost.image} alt={myPost.tite} className="h-48 w-full object-cover rounded-xl" />
+              ) : (
+                <img src="src/assets/image.png" className="h-48 w-full object-cover rounded-xl" />
+              )}
 
-              <div>{myPost.title}</div>
-              <div>
-                <span>주소</span> {myPost.address}
+              <div className="flex flex-col w-full text-center gap-2">
+                <p className="text-sm mb-4">{myPost.foodType}</p>
+                <p className="font-semibold text-lg text-gray-800">{myPost.title}</p>
+                <p className="text-sm text-gray-500">주소: {myPost.address}</p>
               </div>
             </div>
           );
