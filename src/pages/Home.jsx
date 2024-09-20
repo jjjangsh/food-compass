@@ -86,7 +86,6 @@ const Home = () => {
   return (
     <>
       <div className=" flex-col mt-20">
-        {/* <div className="w-full bg-[url('./assets/banner.jpg')] bg-center bg-cover h-60 flex justify-center items-center"></div> */}
         <Banner />
         <div className="fixed bottom-2 right-1 flex flex-col gap-5 p-10 ml-2 mt-2 z-50">
           <div className="flex">

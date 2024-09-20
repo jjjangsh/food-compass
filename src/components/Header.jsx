@@ -11,7 +11,7 @@ const Header = ({ children }) => {
         <div className="flex flex-row justify-between p-2">
           <img
             onClick={() => navigate('/')}
-            width={80}
+            width={75}
             src="src/assets/logo_white.png"
             className="rounded-full hover:cursor-pointer"
             alt="로고"

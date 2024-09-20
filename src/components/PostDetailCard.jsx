@@ -10,7 +10,7 @@ const PostDetailCard = ({ post }) => {
   const profileImage = randomImg[imageIndex];
 
   return (
-    <div className="grid grid-cols-2 gap-4 justify-center border-2 border-gray-300 rounded-lg p-4 mt-4">
+    <div className="grid grid-cols-2 gap-4 justify-center border-2 border-gray-300 rounded-lg p-4 mt-20">
       <div className="w-[400px]">
         <div className="p-2 mb-2 font-mono text-slate-400 flex">
           <img src={profileImage} alt="profileImage" className="w-10 h-10 mr-4 rounded-full" />
