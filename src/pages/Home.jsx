@@ -59,7 +59,9 @@ const Home = () => {
 
   // 무한 스크롤
   useEffect(() => {
-    fetchNextPage();
+    if (inView) {
+      fetchNextPage();
+    }
   }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   if (isPending) return <div>불러오는중</div>;
