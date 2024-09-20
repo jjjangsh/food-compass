@@ -90,7 +90,7 @@ const PostDetailMap = ({ post, postId }) => {
           </CustomOverlayMap>
         )}
       </Map>
-      {user.userId === post.userId ? (
+      {user && user.userId === post.userId ? (
         <div className="text-right mt-4">
           <button
             onClick={() => {
