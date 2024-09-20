@@ -18,11 +18,10 @@ const PostDetailCard = ({ post }) => {
         </div>
         <span className="font-bold m-2">제목</span>
         <div className="border-[1px] rounded-md border-gray-300 p-2 mb-4 mt-2">{post.title}</div>
-        <span className="m-2 font-bold">내용</span>
+        <span className="font-bold m-2">내용</span>
         <div className="border-[1px] rounded-md border-gray-300 p-2 mb-2 mt-2 h-[200px]">{post.postContent}</div>
-        <div className="p-2">
-          <span className="text-slate-400	mr-2">주소</span> {post.address}
-        </div>
+        <span className="font-bold m-2">주소</span>
+        <div className="border-[1px] rounded-md border-gray-300 p-2 mt-2">{post.address}</div>
       </div>
       <div className="w-[400px] ml-2 mt-20">
         <img src={post.image} alt="" className="w-[400px]" />
