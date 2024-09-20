@@ -1,22 +1,6 @@
 {
   "posts": [
     {
-      "id": "3",
-      "userId": "minn",
-      "title": "윤시커피로스터스",
-      "postContent": "022 IMAB 에스프레소 콩쿠르 우승 2022 IMAB 에스프레소 콩쿠르 우승 2022 IMAR 로스팅 콩쿠르 5위한 커피 집",
-      "foodType": "디저트",
-      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
-    },
-    {
-      "id": "2",
-      "userId": "minn",
-      "title": "유럽감성 대형카페 호수뷰 모큐슈라",
-      "postContent": "공릉호라는 호수가 앞에 보이는 카페로 서울에서 조금 벗어나면 있는 파주 대형카페예요 입구부터 초대형 스크린이 있고 예식장 분위기의 웅장한 외관이에요 데이트 장소로 딱이니 차타고 드라이브 할겸 와보세요",
-      "foodType": "디저트",
-      "address": "경기 파주시 조리읍 기곡길 138 1층"
-    },
-    {
       "id": "9d5b",
       "userId": "minn",
       "title": "이쁜 카페 찾았어요!",
@@ -35,15 +19,6 @@
       "image": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230724_116%2F1690160113287kE3GF_JPEG%2FKakaoTalk_20230505_172924523.jpg"
     },
     {
-      "id": "0d49",
-      "userId": "heerok",
-      "title": "일산 맛집 대박각",
-      "postContent": "이름이 대박각이에요 이른 오전에 가도 사람들이 줄 서있네요 포기하고 다른거 먹었어요  다음에 도전한다 한번 먹어보고 알려주세요 그정도인가! 그리고 못 먹어서 사진은 없네요 ㅠㅠ",
-      "foodType": "중식",
-      "address": "경기 고양시 일산서구 주엽동 67",
-      "image": "https://www.thaistore.co.kr/410f404c7d6d8e2607786dc324ff7f1c.png"
-    },
-    {
       "id": "97ff",
       "userId": "minn",
       "title": "해조 평촌",
@@ -51,6 +26,26 @@
       "foodType": "일식",
       "address": "경기 안양시 동안구 관양동 1599-3",
       "image": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230603_51%2F1685719624487YsdH5_JPEG%2FKakaoTalk_20230518_181402994_09.jpg"
+    },
+    {
+      "id": "4eaa",
+      "userId": "testj",
+      "title": "여기 꼭 가보세요~",
+      "postContent": "쌀국수 맛집입니다",
+      "foodType": "한식",
+      "address": "서울 서대문구 창천동 62-9",
+      "image": "https://lh3.googleusercontent.com/proxy/KPevjP570HfRzGfgW-FPYGjj9K4ha0mcmNBRILfH8M5SfQbRboMCoJGy-8weG3hb6pyvwF74KF8AU8AyapMGV5Nzkk62KT6-uPLyTVBl1yo3VF3Eqf6S_SVT_9zMqcBtBzZxP1icqOj0xcko5L699QKn346iIYgR-hnZMQ",
+      "location": "서울"
+    },
+    {
+      "id": "28d4",
+      "userId": "testj",
+      "title": "삼각지역 샤브샤브",
+      "postContent": "샤브샤브 찐맛집",
+      "foodType": "한식",
+      "address": "서울 용산구 용산동3가 5-7",
+      "image": "https://d12zq4w4guyljn.cloudfront.net/750_750_20240818052706873_photo_533c6cd51e0c.jpg",
+      "location": "서울"
     }
   ],
   "comments": [
@@ -71,6 +66,12 @@
       "postId": "3",
       "userId": "heerok",
       "content": "여기 저도 아는데!!! "
+    },
+    {
+      "id": "90a0",
+      "postId": "0d49",
+      "userId": "testj",
+      "content": "dd"
     }
   ]
 }
