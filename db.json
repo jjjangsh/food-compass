@@ -34,7 +34,7 @@
       "postContent": "쌀국수 맛집입니다",
       "foodType": "한식",
       "address": "서울 서대문구 창천동 62-9",
-      "image": "https://lh3.googleusercontent.com/proxy/KPevjP570HfRzGfgW-FPYGjj9K4ha0mcmNBRILfH8M5SfQbRboMCoJGy-8weG3hb6pyvwF74KF8AU8AyapMGV5Nzkk62KT6-uPLyTVBl1yo3VF3Eqf6S_SVT_9zMqcBtBzZxP1icqOj0xcko5L699QKn346iIYgR-hnZMQ",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzw7u_NJw134JCQHH8qzHAD94_93wSKBU5HJarF9JJPCM3tBOS1YVucDBetA1opkCYWqahUOfqL1bmHeLjOR7bWa3IwmnIbpcOg8Hi49iEvoeWqo2dg55xeu1rxyksK3ul9xYWOsX19qLw/w640-h480/IMG_1070.JPG",
       "location": "서울"
     },
     {
@@ -72,6 +72,42 @@
       "postId": "0d49",
       "userId": "testj",
       "content": "dd"
+    },
+    {
+      "id": "6ab3",
+      "postId": "28d4",
+      "userId": "testj",
+      "content": "ㄱ"
+    },
+    {
+      "id": "a731",
+      "postId": "28d4",
+      "userId": "testj",
+      "content": "ㄴ"
+    },
+    {
+      "id": "b137",
+      "postId": "28d4",
+      "userId": "testj",
+      "content": "ㄷ"
+    },
+    {
+      "id": "8f2c",
+      "postId": "28d4",
+      "userId": "testj",
+      "content": "ㄹ"
+    },
+    {
+      "id": "7a33",
+      "postId": "28d4",
+      "userId": "testj",
+      "content": "ㅁ"
+    },
+    {
+      "id": "6330",
+      "postId": "28d4",
+      "userId": "testj",
+      "content": "ㅂ"
     }
   ]
 }
