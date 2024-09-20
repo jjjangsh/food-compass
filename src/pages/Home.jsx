@@ -74,7 +74,7 @@ const Home = () => {
 
         <div className="flex flex-col w-full gap-4 justify-center items-center mt-4">
           <div className="flex flex-col items-end w-full px-4 md:px-16 my-5">
-            <div className="flex flex-row gap-5 relative top-[55px] right-[30px]">
+            <div className="flex flex-row gap-5 relative top-[55px] right-[35px] mb-4">
               <select
                 value={localTab}
                 onChange={(e) => setLocalTab(e.target.value)}
