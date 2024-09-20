@@ -29,7 +29,7 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
     queryKey: ['videos'],
     queryFn: async () => {
       const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?
-        part=snippet&maxResults=3&type=video&q=${keyword}&key=${key}`);
+        part=snippet&maxResults=3&type=video&videoEmbeddable=true&q=${keyword}&key=${key}`);
       return response.data.items;
     }
   });
