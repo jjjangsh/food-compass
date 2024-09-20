@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import YoutubeVideos from '../components/YoutubeVideos';
+// import YoutubeVideos from '../components/YoutubeVideos';
 
 const Home = () => {
   const [localTab, setLocalTab] = useState('');
@@ -143,7 +143,7 @@ const Home = () => {
               </select>
             </div>
           </div>
-          <YoutubeVideos localTab={localTab} currentTab={currentTab} />
+          {/* <YoutubeVideos localTab={localTab} currentTab={currentTab} /> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-8 px-4 md:px-16 py-10 justify-items-center">
             {postsData.length > 0 ? (
               postsData.map((post) => (
