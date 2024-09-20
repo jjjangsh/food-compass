@@ -14,7 +14,7 @@ const PostDetailCard = ({ post }) => {
       <div className="w-[400px]">
         <div className="p-2 mb-2 font-mono text-slate-400 flex">
           <img src={profileImage} alt="profileImage" className="w-10 h-10 mr-4 rounded-full" />
-          <span className="text-lg pt-2">{post.userId}</span>
+          <span className="text-lg pt-2 text-black">{post.userId}</span>
         </div>
         <span className="font-bold m-2">제목</span>
         <div className="border-[1px] rounded-md border-gray-300 p-2 mb-4 mt-2">{post.title}</div>

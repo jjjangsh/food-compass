@@ -64,7 +64,7 @@ const PostDetailMap = ({ post, postId }) => {
         <MapMarker position={{ lat: coords.lat, lng: coords.lng }} onClick={() => setIsOpen(true)}></MapMarker>
         {isOpen && (
           <CustomOverlayMap position={{ lat: coords.lat, lng: coords.lng }}>
-            <div className="w-[288px] bg-white pb-2">
+            <div className="w-[288px] bg-white pb-2 border-2">
               <div className="info">
                 <div className="pt-[5px] pb-[10px] h-[30px] bg-transparent border-b-2 text-base font-bold pl-2">
                   #{post.foodType}
