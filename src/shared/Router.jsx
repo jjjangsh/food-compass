@@ -15,12 +15,13 @@ const Router = () => {
       <Header>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/postdetail" element={<PostDetail />} />
+
           <Route element={<AuthRoute />}>
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route path="/postdetail" element={<PostDetail />} />
             <Route path="/postwrite" element={<PostWrite />} />
             <Route path="/postupdate" element={<PostUpdate />} />
             <Route path="/mypage" element={<MyPage />} />
