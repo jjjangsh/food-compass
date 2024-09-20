@@ -6,10 +6,17 @@ const Header = ({ children }) => {
   const { user, logout } = userStore();
   return (
     <>
-      <div className="fixed w-full bg-sky-200 h-20 p-5 z-50">
-        <div className="flex flex-row justify-between">
-          <button onClick={() => navigate("/")}>로고입니다</button>
-          <div className="flex flex-row gap-2 px-4">
+      <div className="fixed w-full bg-sky-200 h-24 z-50">
+        <div className="flex flex-row justify-between p-2">
+          <img
+            onClick={() => navigate("/")}
+            width={80}
+            src="src/assets/logo_white.png"
+            className="rounded-full hover:cursor-pointer"
+            alt="로고"
+          />
+
+          <div className="flex flex-row gap-2 px-4 justify-center items-center">
             {user ? (
               <>
                 <button
@@ -18,7 +25,10 @@ const Header = ({ children }) => {
                 >
                   마이페이지
                 </button>
-                <button onClick={logout} className="headerBtn">
+                <button
+                  onClick={logout}
+                  className="headerBtn bg-blue-900 text-white"
+                >
                   로그아웃
                 </button>
               </>
@@ -41,7 +51,7 @@ const Header = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex w-full py-24">{children}</div>
+      <div className="flex w-full py-28">{children}</div>
     </>
   );
 };

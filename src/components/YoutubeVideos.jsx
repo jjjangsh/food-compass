@@ -53,15 +53,17 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
   return (
     <div>
       <p>YoutubeVideos</p>
-      {videoData.map((video) => {
-        return (
-          <iframe
-            {...targetVideo}
-            key={video.id.videoId}
-            src={`https://www.youtube.com/embed/${video.id.videoId}`}
-          ></iframe>
-        );
-      })}
+      <div className="grid grid-cols-3 w-full gap-5 px-28">
+        {videoData.map((video) => {
+          return (
+            <iframe
+              {...targetVideo}
+              key={video.id.videoId}
+              src={`https://www.youtube.com/embed/${video.id.videoId}`}
+            ></iframe>
+          );
+        })}
+      </div>
     </div>
   );
 };
