@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import _ from "lodash";
 
 const Home = () => {
   const queryClient = useQueryClient();
@@ -22,7 +21,7 @@ const Home = () => {
   ];
   const foodTypeTabArr = ["전체", "한식", "일식", "중식", "양식", "디저트"];
 
-  // 포스트 가져와서 보여주기
+  // 필터링에 따라 포스트 가져오기
   const {
     data,
     isPending,
@@ -43,6 +42,7 @@ const Home = () => {
       // 최신순으로 정렬
       return response;
     },
+    // 다음 페이지 있는지 확인
     getNextPageParam: (lastPage) => {
       if (lastPage.data.next !== null) {
         return lastPage.data.next;
@@ -58,11 +58,7 @@ const Home = () => {
 
   // 무한 스크롤
   useEffect(() => {
-    const handleNextPostsLoading = _.throttle(() => {
-      if (!inView || !hasNextPage || isFetchingNextPage) return;
-      fetchNextPage();
-    }, 5000);
-    handleNextPostsLoading(inView);
+    fetchNextPage();
   }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   if (isPending) return <div>불러오는중</div>;
@@ -70,71 +66,109 @@ const Home = () => {
 
   return (
     <>
-      <div className="fixed bottom-3 right-3 flex flex-col gap-5">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/18/18529.png"
-          className="w-20 hover:cursor-pointer"
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-        />
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/2740/2740697.png"
-          className="w-20 hover:cursor-pointer"
-          onClick={() => navigate("/postwrite")}
-        />
-      </div>
-      <div className="flex flex-col w-full gap-4 justify-center items-center">
-        <div className="flex flex-col justify-center items-center gap-4 bg-sky-500 p-5 rounded-xl">
-          <div className="flex flex-row gap-7">
-            {localTabArr.map((tab, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => setLocalTab(tab)}
-                  className={localTab === tab ? "focusTabBtn" : "blurTabBtn"}
-                >
-                  {tab}
-                </button>
-              );
-            })}
+      <div className="flex flex-col mt-20">
+        <div className="w-full bg-[url('./assets/banner.jpg')] bg-center bg-cover h-60 flex justify-center items-center"></div>
+
+        <div className="fixed bottom-2 right-1 flex flex-col gap-5 p-10 ml-2 mt-2 z-50">
+          <div
+            className="flex hover:cursor-pointer"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/18/18529.png"
+              className="w-6 mr-2"
+            />
+            <p className="font-semibold text-[18px]">TOP</p>
           </div>
-          <div className="flex flex-row gap-7">
-            {foodTypeTabArr.map((tab, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => setTab(tab)}
-                  className={currentTab === tab ? "focusTabBtn" : "blurTabBtn"}
-                >
-                  {tab}
-                </button>
-              );
-            })}
+
+          <div
+            className="flex hover:cursor-pointer"
+            onClick={() => navigate("/postwrite")}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2740/2740697.png"
+              className="w-6 mr-2"
+            />
+            <p className="font-semibold text-[18px]">글쓰기</p>
           </div>
         </div>
-        <div id="mainList" className="grid grid-cols-3 w-full gap-5 px-28">
+
+        <div className="flex flex-col w-full gap-4 justify-center items-center mt-4">
+          <div className="flex flex-col items-end w-full px-4 md:px-16 my-5">
+            <div className="flex flex-row gap-5 relative top-[55px] right-[5px]">
+              <select
+                value={localTab}
+                onChange={(e) => setLocalTab(e.target.value)}
+                className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="" disabled hidden>
+                  지역
+                </option>
+                {localTabArr.map((tab, index) => (
+                  <option key={index} value={tab}>
+                    {tab}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={currentTab}
+                onChange={(e) => setTab(e.target.value)}
+                className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="" disabled hidden>
+                  음식
+                </option>
+                {foodTypeTabArr.map((tab, index) => (
+                  <option key={index} value={tab}>
+                    {tab}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-8 px-4 md:px-16 py-10 justify-items-center">
           {data.pages.map((page) => {
             return page.data.data.map((post) => {
               return (
                 <div
                   key={post.id}
-                  className="flex flex-col bg-sky-50 p-3 gap-2 justify-center items-center rounded-xl hover:cursor-pointer"
+                  className="flex flex-col w-full max-w-sm border border-gray-300 bg-white shadow-md p-4 gap-3 justify-start items-center rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
                   onClick={() => navigate(`/postdetail?id=${post.id}`)}
                 >
                   {post.image ? (
-                    <img src={post.image} alt={post.title} />
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="h-48 w-full object-cover rounded-xl"
+                    />
                   ) : (
-                    <div>이미지가 없음</div>
+                    <div className="h-48 w-full flex justify-center items-center bg-gray-200 rounded-xl">
+                      이미지가 없음
+                    </div>
                   )}
-                  <p>{post.title}</p>
-                  <p>{post.address}</p>
+                  <div className="flex flex-col w-full text-center gap-2">
+                    <p className="text-sm mb-4">{post.foodType}</p>
+                    <p className="font-semibold text-lg text-gray-800">
+                      {post.title}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      주소: {post.address}
+                    </p>
+                  </div>
                 </div>
               );
             });
           })}
         </div>
-        <div ref={ref}>마지막</div>
+        <div
+          ref={ref}
+          className="flex justify-center bg-orange-500 text-white text-2xl p-3"
+        >
+          끝이에요
+        </div>
       </div>
     </>
   );
