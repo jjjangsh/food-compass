@@ -41,12 +41,12 @@ const Home = () => {
         }&_page=${pageParam}&_per_page=12`
       );
       // 최신순으로 정렬
-      return response;
+      return response.data;
     },
     // 다음 페이지 있는지 확인
     getNextPageParam: (lastPage) => {
-      if (lastPage.data.next !== null) {
-        return lastPage.data.next;
+      if (lastPage.next !== null) {
+        return lastPage.next;
       }
       return undefined;
     },
@@ -59,10 +59,9 @@ const Home = () => {
 
   // 무한 스크롤
   useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
+    if (!inView || !hasNextPage || isFetchingNextPage) return;
+    fetchNextPage();
+  }, [inView]);
 
   if (isPending) return <div>불러오는중</div>;
   if (isError) return <div>에러남</div>;
@@ -134,7 +133,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-8 px-4 md:px-16 py-10 justify-items-center">
           {data.pages.map((page) => {
-            return page.data.data.map((post) => {
+            return page.data.map((post) => {
               return (
                 <div
                   key={post.id}
