@@ -56,18 +56,17 @@ const MyPage = () => {
   ];
   const randomIndex = Math.floor(Math.random() * profileImgsArr.length);
 
-  console.log('useEffect 밖');
-
   const nicknameRef = useRef('');
   useEffect(() => {
     nicknameRef.current.focus();
     setProfileImg(profileImgsArr[randomIndex]);
-    console.log('useEffect 안');
   }, []);
   return (
     <div>
-      <div className="  h-16 flex items-center justify-center text-2xl mt-10 mb-3">내 프로필</div>
-      <div className=" flex flex-col  rounded-lg justify-center items-center w-80 h-96 m-auto bg-sky-200">
+      <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-8 mx-auto text-center justify-items-center p-3">
+        내 프로필
+      </div>
+      <div className=" flex flex-col  rounded-lg justify-center items-center w-80 h-96 m-auto bg-amber-500">
         <img className="w-52 h-52 " src={profileImg} />
         <h5 className="p-3">닉네임: {user.nickname} </h5>
         <form className="gap-6" onSubmit={changeNicknameHandler}>
@@ -86,6 +85,7 @@ const MyPage = () => {
           </div>
         </form>
       </div>
+
       <MyPosts />
     </div>
   );
