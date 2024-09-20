@@ -5,7 +5,8 @@ import KakaoMap from './KakaoMap';
 const PostForm = ({ onSubmit, isEditing, initialData }) => {
   const fileInputRef = useRef(null);
   const { user } = userStore();
-  const defaultImageUrl = 'https://www.thaistore.co.kr/410f404c7d6d8e2607786dc324ff7f1c.png';
+  const defaultImageUrl =
+    'https://velog.velcdn.com/images/bsjaehee94/post/924c4319-a5c3-457e-a0d5-6e4804d7e26b/image.png';
   const [imagePreview, setImagePreview] = useState(null);
   const [formData, setFormData] = useState({
     userId: '',
