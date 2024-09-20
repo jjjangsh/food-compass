@@ -10,7 +10,7 @@ const KakaoMap = ({ address, setAddress }) => {
   useEffect(() => {
     // 지도 생성하기
     // 지도를 생성할 곳 지정하기
-    const container = document.getElementById("map");
+    const container = document.getElementById('map');
     // 지도 옵션 결정하기 -지도 중심과 축척
     const options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
