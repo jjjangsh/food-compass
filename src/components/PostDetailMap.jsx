@@ -96,11 +96,11 @@ const PostDetailMap = ({ post, postId }) => {
             onClick={() => {
               navigate(`/postupdate?id=${postId}`);
             }}
-            className=" detailBtn"
+            className=" detailBtn hover:bg-sky-300 hover:text-white"
           >
             수정하기
           </button>
-          <button onClick={deletePost} className=" detailBtn">
+          <button onClick={deletePost} className=" detailBtn hover:bg-rose-400 hover:text-white">
             삭제하기
           </button>
         </div>

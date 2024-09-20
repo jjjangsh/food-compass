@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Banner from '../components/Banner';
 
 const Home = () => {
   const [localTab, setLocalTab] = useState('');
@@ -84,9 +85,9 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col mt-20">
-        <div className="w-full bg-[url('./assets/banner.jpg')] bg-center bg-cover h-60 flex justify-center items-center"></div>
-
+      <div className=" flex-col mt-20">
+        {/* <div className="w-full bg-[url('./assets/banner.jpg')] bg-center bg-cover h-60 flex justify-center items-center"></div> */}
+        <Banner />
         <div className="fixed bottom-2 right-1 flex flex-col gap-5 p-10 ml-2 mt-2 z-50">
           <div className="flex">
             <img
@@ -111,7 +112,7 @@ const Home = () => {
 
         <div className="flex flex-col w-full gap-4 justify-center items-center mt-4">
           <div className="flex flex-col items-end w-full px-4 md:px-16 my-5">
-            <div className="flex flex-row gap-5 relative top-[55px] right-[5px]">
+            <div className="flex flex-row gap-5 relative top-[55px] right-[30px]">
               <select
                 value={localTab}
                 onChange={(e) => setLocalTab(e.target.value)}
