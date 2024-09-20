@@ -164,7 +164,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
             <label className="block mb-1">제목</label>
             <input
               onChange={handleChange}
-              className="text-gray-500 border border-orange-200 rounded-md w-full px-3 py-2 outline-none focus:border-orange-400 font-light"
+              className="text-gray-500 border-2 border-orange-200 rounded-md w-full px-3 py-2 outline-none focus:border-orange-400 font-light"
               type="text"
               name="title"
               placeholder="제목을 입력하세요"
@@ -176,7 +176,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
             <label className="block mb-1">내용</label>
             <textarea
               onChange={handleChange}
-              className="text-gray-500 border border-orange-200 rounded-md w-full px-3 py-2 outline-none resize-none focus:border-orange-400 font-light"
+              className="text-gray-500 border-2 border-orange-200 rounded-md w-full px-3 py-2 outline-none resize-none focus:border-orange-400 font-light"
               name="postContent"
               placeholder="내용을 입력하세요"
               value={formData.postContent}
@@ -188,7 +188,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
             <label className="block mb-1">카테고리</label>
             <select
               onChange={handleChange}
-              className="font-light border border-orange-200 rounded-md w-full px-3 py-2 outline-none focus:border-orange-400 text-gray-500"
+              className="font-light border-2 border-orange-200 rounded-md w-full px-3 py-2 outline-none focus:border-orange-400 text-gray-500"
               name="foodType"
               value={formData.foodType}
             >

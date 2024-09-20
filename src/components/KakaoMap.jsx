@@ -86,7 +86,7 @@ const KakaoMap = ({ address, setAddress }) => {
       <form className="flex gap-3 h-10">
         <input
           onChange={(e) => setSearch(e.target.value)}
-          className="text-gray-500 border border-orange-200 rounded-md w-[355px] px-3 py-2 outline-none focus:border-orange-400"
+          className="text-gray-500 border-2 border-orange-200 rounded-md w-[355px] px-3 py-2 outline-none focus:border-orange-400"
           placeholder="주소를 입력하세요"
         />
         <button
