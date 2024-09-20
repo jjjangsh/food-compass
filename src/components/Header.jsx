@@ -7,11 +7,11 @@ const Header = ({ children }) => {
   const { user, logout } = userStore();
   return (
     <>
-      <div className="fixed w-full bg-orange-500 h-24 z-50">
+      <div className="fixed w-full bg-orange-400 h-24 z-50">
         <div className="flex flex-row justify-between p-2">
           <img
             onClick={() => navigate('/')}
-            width={80}
+            width={75}
             src="src/assets/logo_white.png"
             className="rounded-full hover:cursor-pointer"
             alt="로고"
@@ -41,7 +41,7 @@ const Header = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex w-full justify-center py-28">{children}</div>
+      <div className="flex w-full justify-center py-4">{children}</div>
     </>
   );
 };

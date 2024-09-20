@@ -122,7 +122,7 @@ const PostForm = ({ onSubmit, isEditing, initialData }) => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full max-h-screen max-w-[800px] mt-[-8px]">
+    <div className="flex justify-center items-center w-full max-h-screen max-w-[800px] mt-32">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col justify-center items-center w-full max-w-[800px] max-h-full overflow-hidden sm:overflow-visible gap-3"
