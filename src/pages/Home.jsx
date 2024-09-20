@@ -1,43 +1,27 @@
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import Banner from '../components/Banner';
 // import YoutubeVideos from '../components/YoutubeVideos';
 
 const Home = () => {
   const queryClient = useQueryClient();
-  const [localTab, setLocalTab] = useState("전체");
-  const [currentTab, setTab] = useState("전체");
+  const [localTab, setLocalTab] = useState('전체');
+  const [currentTab, setTab] = useState('전체');
   const navigate = useNavigate();
   const { ref, inView } = useInView({ threshold: 1 });
-  const localTabArr = [
-    "전체",
-    "서울",
-    "부산",
-    "인천",
-    "경기",
-    "제주도",
-    "기타",
-  ];
-  const foodTypeTabArr = ["전체", "한식", "일식", "중식", "양식", "디저트"];
+  const localTabArr = ['전체', '서울', '부산', '인천', '경기', '제주도', '기타'];
+  const foodTypeTabArr = ['전체', '한식', '일식', '중식', '양식', '디저트'];
 
   // 필터링에 따라 포스트 가져오기
-  const {
-    data,
-    isPending,
-    isError,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey: ["post"],
+  const { data, isPending, isError, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    queryKey: ['post'],
     queryFn: async ({ pageParam = 1 }) => {
       const response = await axios.get(
-        `http://localhost:4000/posts?location=${
-          localTab === "전체" ? "" : localTab
-        }&foodType=${
-          currentTab === "전체" ? "" : currentTab
+        `http://localhost:4000/posts?location=${localTab === '전체' ? '' : localTab}&foodType=${
+          currentTab === '전체' ? '' : currentTab
         }&_page=${pageParam}&_per_page=12`
       );
       // 최신순으로 정렬
@@ -49,12 +33,12 @@ const Home = () => {
         return lastPage.data.next;
       }
       return undefined;
-    },
+    }
   });
 
   // 탭 누르면 post 정보 유효성 초기화해서 다시 불러오기
   useEffect(() => {
-    queryClient.invalidateQueries(["post"]);
+    queryClient.invalidateQueries(['post']);
   }, [queryClient, localTab, currentTab]);
 
   // 무한 스크롤
@@ -69,38 +53,28 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col mt-20">
-        <div className="w-full bg-[url('./assets/banner.jpg')] bg-center bg-cover h-60 flex justify-center items-center"></div>
-
+      <div className=" flex-col mt-20">
+        <Banner />
         <div className="fixed bottom-2 right-1 flex flex-col gap-5 p-10 ml-2 mt-2 z-50">
           <div
             className="flex hover:cursor-pointer"
             onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/18/18529.png"
-              className="w-6 mr-2"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/18/18529.png" className="w-6 mr-2" />
             <p className="font-semibold text-[18px]">TOP</p>
           </div>
 
-          <div
-            className="flex hover:cursor-pointer"
-            onClick={() => navigate("/postwrite")}
-          >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2740/2740697.png"
-              className="w-6 mr-2"
-            />
+          <div className="flex hover:cursor-pointer" onClick={() => navigate('/postwrite')}>
+            <img src="https://cdn-icons-png.flaticon.com/512/2740/2740697.png" className="w-6 mr-2" />
             <p className="font-semibold text-[18px]">글쓰기</p>
           </div>
         </div>
 
         <div className="flex flex-col w-full gap-4 justify-center items-center mt-4">
           <div className="flex flex-col items-end w-full px-4 md:px-16 my-5">
-            <div className="flex flex-row gap-5 relative top-[55px] right-[5px]">
+            <div className="flex flex-row gap-5 relative top-[55px] right-[35px] mb-4">
               <select
                 value={localTab}
                 onChange={(e) => setLocalTab(e.target.value)}
@@ -142,11 +116,7 @@ const Home = () => {
                   onClick={() => navigate(`/postdetail?id=${post.id}`)}
                 >
                   {post.image ? (
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="h-48 w-full object-cover rounded-xl"
-                    />
+                    <img src={post.image} alt={post.title} className="h-48 w-full object-cover rounded-xl" />
                   ) : (
                     <div className="h-48 w-full flex justify-center items-center bg-gray-200 rounded-xl">
                       이미지가 없음
@@ -154,22 +124,15 @@ const Home = () => {
                   )}
                   <div className="flex flex-col w-full text-center gap-2">
                     <p className="text-sm mb-4">{post.foodType}</p>
-                    <p className="font-semibold text-lg text-gray-800">
-                      {post.title}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      주소: {post.address}
-                    </p>
+                    <p className="font-semibold text-lg text-gray-800">{post.title}</p>
+                    <p className="text-sm text-gray-500">주소: {post.address}</p>
                   </div>
                 </div>
               );
             });
           })}
         </div>
-        <div
-          ref={ref}
-          className="flex justify-center bg-orange-500 text-white text-2xl p-3"
-        >
+        <div ref={ref} className="flex justify-center bg-orange-500 text-white text-2xl p-3">
           끝이에요
         </div>
       </div>
