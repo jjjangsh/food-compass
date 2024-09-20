@@ -1,13 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import _ from "lodash";
 
 const Home = () => {
+  const queryClient = useQueryClient();
   const [localTab, setLocalTab] = useState("전체");
   const [currentTab, setTab] = useState("전체");
   const navigate = useNavigate();
-
+  const { ref, inView } = useInView({ threshold: 1 });
   const localTabArr = [
     "전체",
     "서울",
@@ -17,78 +20,53 @@ const Home = () => {
     "제주도",
     "기타",
   ];
-
   const foodTypeTabArr = ["전체", "한식", "일식", "중식", "양식", "디저트"];
 
   // 포스트 가져와서 보여주기
-  const { data, isPending, isError } = useQuery({
+  const {
+    data,
+    isPending,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ["post"],
-    queryFn: async () => {
-      const response = await axios.get("http://localhost:4000/posts");
+    queryFn: async ({ pageParam = 1 }) => {
+      const response = await axios.get(
+        `http://localhost:4000/posts?location=${
+          localTab === "전체" ? "" : localTab
+        }&foodType=${
+          currentTab === "전체" ? "" : currentTab
+        }&_page=${pageParam}&_per_page=12`
+      );
       // 최신순으로 정렬
-      return response.data.reverse();
+      return response;
+    },
+    getNextPageParam: (lastPage) => {
+      if (lastPage.data.next !== null) {
+        return lastPage.data.next;
+      }
+      return undefined;
     },
   });
-  if (isPending) return <div>가져오는 중</div>;
-  if (isError) return <div>오류</div>;
 
-  // 탭으로 post 데이터 필터링하기
-  let postsData = data;
-  switch (localTab) {
-    case "전체":
-      postsData = data;
-      break;
-    case "서울":
-      postsData = postsData.filter((n) => n.address.includes("서울"));
-      break;
-    case "부산":
-      postsData = postsData.filter((n) => n.address.includes("부산"));
-      break;
-    case "인천":
-      postsData = postsData.filter((n) => n.address.includes("인천"));
-      break;
-    case "경기":
-      postsData = postsData.filter((n) => n.address.includes("경기"));
-      break;
-    case "제주도":
-      postsData = postsData.filter((n) => n.address.includes("제주"));
-      break;
-    case "기타":
-      postsData = postsData.filter((n) => {
-        return (
-          !n.address.includes("서울") &&
-          !n.address.includes("부산") &&
-          !n.address.includes("인천") &&
-          !n.address.includes("경기") &&
-          !n.address.includes("제주")
-        );
-      });
-      break;
-    default:
-      postsData = data;
-  }
-  switch (currentTab) {
-    case "전체":
-      postsData = postsData.filter((n) => n);
-      break;
-    case "한식":
-      postsData = postsData.filter((n) => n.foodType === "한식");
-      break;
-    case "일식":
-      postsData = postsData.filter((n) => n.foodType === "일식");
-      break;
-    case "중식":
-      postsData = postsData.filter((n) => n.foodType === "중식");
-      break;
-    case "양식":
-      postsData = postsData.filter((n) => n.foodType === "양식");
-      break;
-    case "디저트":
-      postsData = postsData.filter((n) => n.foodType === "디저트");
-      break;
-    default:
-      postsData = postsData.filter((n) => n);
-  }
+  // 탭 누르면 post 정보 유효성 초기화해서 다시 불러오기
+  useEffect(() => {
+    queryClient.invalidateQueries(["post"]);
+  }, [queryClient, localTab, currentTab]);
+
+  // 무한 스크롤
+  useEffect(() => {
+    const handleNextPostsLoading = _.throttle(() => {
+      if (!inView || !hasNextPage || isFetchingNextPage) return;
+      fetchNextPage();
+    }, 5000);
+    handleNextPostsLoading(inView);
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
+
+  if (isPending) return <div>불러오는중</div>;
+  if (isError) return <div>에러남</div>;
 
   return (
     <>
@@ -135,9 +113,9 @@ const Home = () => {
             })}
           </div>
         </div>
-        <div className="grid grid-cols-3 w-full gap-5 px-28">
-          {postsData.length > 0 ? (
-            postsData.map((post) => {
+        <div id="mainList" className="grid grid-cols-3 w-full gap-5 px-28">
+          {data.pages.map((page) => {
+            return page.data.data.map((post) => {
               return (
                 <div
                   key={post.id}
@@ -153,11 +131,10 @@ const Home = () => {
                   <p>{post.address}</p>
                 </div>
               );
-            })
-          ) : (
-            <div>필터 결과가 없습니다</div>
-          )}
+            });
+          })}
         </div>
+        <div ref={ref}>마지막</div>
       </div>
     </>
   );

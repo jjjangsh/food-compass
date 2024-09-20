@@ -6,7 +6,8 @@
       "title": "윤시커피로스터스",
       "postContent": "022 IMAB 에스프레소 콩쿠르 우승 2022 IMAB 에스프레소 콩쿠르 우승 2022 IMAR 로스팅 콩쿠르 5위한 커피 집",
       "foodType": "디저트",
-      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호"
+      "address": "경기 고양시 일산동구 일산로316번길 25-9 1층 101호",
+      "location": "경기"
     },
     {
       "id": "2",
@@ -14,7 +15,8 @@
       "title": "유럽감성 대형카페 호수뷰 모큐슈라",
       "postContent": "공릉호라는 호수가 앞에 보이는 카페로 서울에서 조금 벗어나면 있는 파주 대형카페예요 입구부터 초대형 스크린이 있고 예식장 분위기의 웅장한 외관이에요 데이트 장소로 딱이니 차타고 드라이브 할겸 와보세요",
       "foodType": "디저트",
-      "address": "경기 파주시 조리읍 기곡길 138 1층"
+      "address": "경기 파주시 조리읍 기곡길 138 1층",
+      "location": "경기"
     },
     {
       "id": "9d5b",
@@ -23,6 +25,7 @@
       "postContent": "공릉호라는 호수가 앞에 보이는 카페로 서울에서 조금 벗어나면 있는 파주 대형카페예요 입구부터 초대형 스크린이 있고 예식장 분위기의 웅장한 외관이에요 데이트 장소로 딱이니 차타고 드라이브 할겸 와보세요",
       "foodType": "디저트",
       "address": "경기 파주시 조리읍 장곡리 351-2",
+      "location": "경기",
       "image": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230310_261%2F1678382014767ulavE_JPEG%2FMochuislefrenchcafe_f_%25281%2529.jpg"
     },
     {
@@ -32,6 +35,7 @@
       "postContent": "오늘은 행궁동 맛집 미사카행궁을 소개해드립니다. 미사카행궁은 따로 주차 공간이 마련되어 있지 않아서 장안동 공영주차장  또는 화홍문 공영주차장을 이용하시는걸 추천드려요. 오픈시간은 매일 11시30분이며 라스트 오더는 8시30분입니다. 여기 미쳤죠 요즘에 행궁동 맛집들 이쁘고 장난아닌듯요",
       "foodType": "양식",
       "address": "경기 수원시 팔달구 신풍동 89-4",
+      "location": "경기",
       "image": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230724_116%2F1690160113287kE3GF_JPEG%2FKakaoTalk_20230505_172924523.jpg"
     },
     {
@@ -41,6 +45,7 @@
       "postContent": "이름이 대박각이에요 이른 오전에 가도 사람들이 줄 서있네요 포기하고 다른거 먹었어요  다음에 도전한다 한번 먹어보고 알려주세요 그정도인가! 그리고 못 먹어서 사진은 없네요 ㅠㅠ",
       "foodType": "중식",
       "address": "경기 고양시 일산서구 주엽동 67",
+      "location": "경기",
       "image": "https://www.thaistore.co.kr/410f404c7d6d8e2607786dc324ff7f1c.png"
     },
     {
@@ -50,7 +55,18 @@
       "postContent": "평촌에서 오랫동안 인기있는 일식당으로 자리하고 있는 해조에 다녀왔습니다. 정갈하고 깔끔한 분위기이고, 직원분들의 친절함이 더해져서 더욱 더 편안한 점심식사 시간을 보내고 왔어요 일식 추천!",
       "foodType": "일식",
       "address": "경기 안양시 동안구 관양동 1599-3",
+      "location": "경기",
       "image": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230603_51%2F1685719624487YsdH5_JPEG%2FKakaoTalk_20230518_181402994_09.jpg"
+    },
+    {
+      "id": "6928",
+      "userId": "kim@test.com",
+      "title": "테스트입니다",
+      "postContent": "테스트예용",
+      "foodType": "양식",
+      "address": "부산 부산진구 부전동 191-1",
+      "image": "https://www.thaistore.co.kr/410f404c7d6d8e2607786dc324ff7f1c.png",
+      "location": "부산"
     }
   ],
   "comments": [
