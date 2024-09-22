@@ -15,19 +15,19 @@ const Banner = () => {
     <div className="max-w-[100vw]">
       <Slider {...settings}>
         <div>
-          <img src="src/assets/food1.jpg" alt="음식사진" />
+          <img src="../assets/food1.jpg" alt="음식사진" />
         </div>
         <div>
-          <img src="src/assets/food2.jpg" alt="음식사진" />
+          <img src="../assets/food2.jpg" alt="음식사진" />
         </div>
         <div>
-          <img src="src/assets/food3.jpg" alt="음식사진" />
+          <img src="../assets/food3.jpg" alt="음식사진" />
         </div>
         <div>
-          <img src="src/assets/food4.jpg" alt="음식사진" />
+          <img src="../assets/food4.jpg" alt="음식사진" />
         </div>
         <div>
-          <img src="src/assets/food5.jpg" alt="음식사진" />
+          <img src="../assets/food5.jpg" alt="음식사진" />
         </div>
       </Slider>
     </div>
