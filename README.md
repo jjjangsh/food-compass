@@ -48,7 +48,7 @@
 
 </br>
 
-<img src="https://github.com/user-attachments/assets/ad3b1164-cdc9-43b1-b9d3-3a79acbcf909" width="4000" height="100"/>
+<img src="https://github.com/user-attachments/assets/ad3b1164-cdc9-43b1-b9d3-3a79acbcf909" width="500" height="100"/>
 </br>
 날씨
 
@@ -59,26 +59,23 @@
 댓글
 
 </br>
-
-
-<img src='https://github.com/user-attachments/assets/15951cea-8e7a-4e01-8a21-3ea8048d6592'/>
+<img src="https://github.com/user-attachments/assets/15951cea-8e7a-4e01-8a21-3ea8048d6592" width="400" height="300"/>
 </br>
 프로필 변경
 
 </br>
 
-<img src='https://github.com/user-attachments/assets/be2e3a4e-e436-4584-9b0f-932ff2178c8f'/>
+<img src='https://github.com/user-attachments/assets/be2e3a4e-e436-4584-9b0f-932ff2178c8f' width="600" height="300"/>
 </br>
 내가 작성한 게시물 불러오기
 
 </br>
 
-<img src='https://github.com/user-attachments/assets/05dadd2d-8621-47f8-9111-16e9cbb49dc2'/>
+<img src='https://github.com/user-attachments/assets/05dadd2d-8621-47f8-9111-16e9cbb49dc2' width="600" height="300"/>
 </br>
 필터별 youtube 동영상 가져오기
 
 </br>
-
 
 <img width="300" alt="게시글 작성" src="https://github.com/user-attachments/assets/aa5a7410-0034-46ba-a600-56a5c966d5d6">
 </br>
@@ -89,18 +86,14 @@
 </br>
 포스트 수정
 </br>
+
 </br>
 
-
+<img src="https://github.com/user-attachments/assets/0980a49a-c160-403d-97b8-1637140afdf4" alt="탭 시연 움짤"/>
 </br>
 탭으로 게시물 필터링
 
-<img src="https://github.com/user-attachments/assets/0980a49a-c160-403d-97b8-1637140afdf4" alt="탭 시연 움짤"/>
-
 </br>
-
-
-
 
 # 기술 스택
 
