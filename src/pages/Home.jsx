@@ -2,16 +2,16 @@ import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
 import Banner from "../components/Banner";
+import { useInView } from "react-intersection-observer";
 // import YoutubeVideos from "../components/YoutubeVideos";
 
 const Home = () => {
   const queryClient = useQueryClient();
+
   const [localTab, setLocalTab] = useState("전체");
   const [currentTab, setTab] = useState("전체");
   const navigate = useNavigate();
-  const { ref, inView } = useInView({ threshold: 1 });
   const localTabArr = [
     "전체",
     "서울",
@@ -36,10 +36,14 @@ const Home = () => {
     queryFn: async ({ pageParam = 1 }) => {
       const response = await axios.get(
         `https://classy-puzzling-collision.glitch.me/posts?${
-          localTab === "전체" ? "" : "location=" + localTab + "&"
+          localTab === "전체"
+            ? ""
+            : localTab === "기타"
+            ? ""
+            : "location=" + localTab + "&"
         }${
           currentTab === "전체" ? "" : "foodType=" + currentTab + "&"
-        }_page=${pageParam}&_per_page=12`
+        }_page=${pageParam}&_limit=12`
       );
       // 최신순으로 정렬
       return response.data;
@@ -52,17 +56,30 @@ const Home = () => {
       return undefined;
     },
   });
+  const { ref, inView } = useInView({
+    threshold: 1,
+    onChange: () => {
+      console.log("무한스크롤 전");
+      if (!inView || !hasNextPage || isFetchingNextPage) return;
+      console.log("무한스크롤 작동");
+      fetchNextPage();
+    },
+  });
 
   // 탭 누르면 post 정보 유효성 초기화해서 다시 불러오기
   useEffect(() => {
     queryClient.invalidateQueries(["post"]);
   }, [queryClient, localTab, currentTab]);
 
-  // 무한 스크롤
-  useEffect(() => {
-    if (!inView || !hasNextPage || isFetchingNextPage) return;
-    fetchNextPage();
-  }, [inView]);
+  // console.log(inView);
+  // // 무한 스크롤
+  // useEffect(() => {
+  //   console.log("유즈이펙트");
+
+  //   if (!inView || !hasNextPage || isFetchingNextPage) return;
+  //   console.log("무한스크롤 작동");
+  //   fetchNextPage();
+  // }, [inView]);
 
   if (isPending) return <div>불러오는중</div>;
   if (isError) return <div>에러남</div>;
@@ -138,40 +155,44 @@ const Home = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-8 px-4 md:px-16 py-10 justify-items-center">
           {data.pages.map((page) => {
             return page?.map((post) => {
-              return (
-                <div
-                  key={post.id}
-                  className="flex flex-col w-full max-w-sm border border-gray-300 bg-white shadow-md p-4 gap-3 justify-start items-center rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
-                  onClick={() => navigate(`/postdetail?id=${post.id}`)}
-                >
-                  {post.image ? (
+              if (
+                (localTab === "기타" &&
+                  post.location !== "서울" &&
+                  post.location !== "부산" &&
+                  post.location !== "인천" &&
+                  post.location !== "경기" &&
+                  post.location !== "제주도") ||
+                localTab !== "기타"
+              ) {
+                return (
+                  <div
+                    key={post.id}
+                    className="flex flex-col w-full max-w-sm border border-gray-300 bg-white shadow-md p-4 gap-3 justify-start items-center rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+                    onClick={() => navigate(`/postdetail?id=${post.id}`)}
+                  >
                     <img
                       src={post.image}
                       alt={post.title}
                       className="h-48 w-full object-cover rounded-xl"
                     />
-                  ) : (
-                    <div className="h-48 w-full flex justify-center items-center bg-gray-200 rounded-xl">
-                      이미지가 없음
+                    <div className="flex flex-col w-full text-center gap-2">
+                      <p className="text-sm mb-4">{post.foodType}</p>
+                      <p className="font-semibold text-lg text-gray-800">
+                        {post.title}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        주소: {post.address}
+                      </p>
                     </div>
-                  )}
-                  <div className="flex flex-col w-full text-center gap-2">
-                    <p className="text-sm mb-4">{post.foodType}</p>
-                    <p className="font-semibold text-lg text-gray-800">
-                      {post.title}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      주소: {post.address}
-                    </p>
                   </div>
-                </div>
-              );
+                );
+              }
             });
           })}
         </div>
         <div
           ref={ref}
-          className="flex justify-center bg-orange-500 text-white text-2xl p-3"
+          className="flex justify-center bg-orange-500 text-white text-2xl p-3d"
         >
           끝이에요
         </div>
