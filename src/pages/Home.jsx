@@ -111,7 +111,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-8 px-4 md:px-16 py-10 justify-items-center">
           {data.pages.map((page) => {
-            return page.data.map((post) => {
+            return page?.data?.map((post) => {
               return (
                 <div
                   key={post.id}
