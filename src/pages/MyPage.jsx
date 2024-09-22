@@ -52,11 +52,11 @@ const MyPage = () => {
   };
 
   const profileImgsArr = [
-    'src/assets/image1.png',
-    'src/assets/image2.png',
-    'src/assets/image3.png',
-    'src/assets/image4.png',
-    'src/assets/image5.png'
+    '/assets/image1.png',
+    '/assets/image2.png',
+    '/assets/image3.png',
+    '/assets/image4.png',
+    '/assets/image5.png'
   ];
   const randomIndex = Math.floor(Math.random() * profileImgsArr.length);
 

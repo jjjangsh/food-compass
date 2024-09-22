@@ -1,10 +1,10 @@
 const PostDetailCard = ({ post }) => {
   const randomImg = [
-    'src/assets/image1.png',
-    'src/assets/image2.png',
-    'src/assets/image3.png',
-    'src/assets/image4.png',
-    'src/assets/image5.png'
+    '/assets/image1.png',
+    '/assets/image2.png',
+    '/assets/image3.png',
+    '/assets/image4.png',
+    '/assets/image5.png'
   ];
   const imageIndex = Math.floor(Math.random() * randomImg.length);
   const profileImage = randomImg[imageIndex];

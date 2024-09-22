@@ -29,7 +29,7 @@ const SignIn = () => {
       <div className="bg-orange-400 shadow-md rounded-lg mt-44 p-8 w-full max-w-md">
         <div className="flex items-center justify-center">
           <img
-            src="src/assets/logo_white.png"
+            src="/assets/logo_white.png"
             style={{
               width: '150px',
               height: '150px',
