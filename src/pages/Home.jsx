@@ -20,7 +20,7 @@ const Home = () => {
     queryKey: ['post'],
     queryFn: async ({ pageParam = 1 }) => {
       const response = await axios.get(
-        `http://localhost:4000/posts?location=${localTab === '전체' ? '' : localTab}&foodType=${
+        `https://classy-puzzling-collision.glitch.me/posts?location=${localTab === '전체' ? '' : localTab}&foodType=${
           currentTab === '전체' ? '' : currentTab
         }&_page=${pageParam}&_per_page=12`
       );

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const POST_URL = 'http://localhost:4000/posts';
+const POST_URL = 'https://classy-puzzling-collision.glitch.me/posts';
 
 // posts 데이터 가져오기
 export const fetchPosts = async () => {
