@@ -31,7 +31,8 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
       const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?
         part=snippet&maxResults=3&type=video&videoEmbeddable=true&q=${keyword}&key=${key}`);
       return response.data.items;
-    }
+    },
+    staleTime: 1000 * 60 * 60
   });
 
   if (isPending) {
@@ -44,7 +45,7 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
   const targetVideo = {
     id: 'ytplayer',
     type: 'text/html',
-    width: '440',
+    width: '460',
     height: '270',
     frameBorder: '0',
     allowFullScreen: 'allowFullScreen'
@@ -58,7 +59,7 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
         </p>
         <p className="ml-6"> 맛집 추천 영상</p>
       </div>
-      <div className="grid grid-cols-3  mt-6 gap-12 mx-8 ">
+      <div className="grid grid-cols-3 justify-items-center mt-14 gap-2 mx-24 ">
         {videoData.map((video) => {
           return (
             <iframe
