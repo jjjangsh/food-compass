@@ -97,12 +97,12 @@ const Comment = ({ postId }) => {
   if (isCommentError || isCountError) return <div>댓글을 불러오는 중 에러가 발생했습니다.</div>;
 
   return (
-    <div className="border-2 border-gray-300 rounded-lg p-6 mt-6">
+    <div className="border-2 border-gray-300 bg-gray-50 rounded-lg p-6 mt-6">
       <h3 className="text-xl font-semibold mb-4">댓글</h3>
       {comments?.length > 0 ? (
         comments.map((comment) => (
-          <div key={comment.id} className="bg-white border border-gray-300 shadow-sm rounded-md p-3 mb-3">
-            <div className="flex justify-between items-start">
+          <div key={comment.id} className="border bg-gray-100 border-gray-300 shadow-sm rounded-md p-3 mb-3">
+            <div className="flex justify-between  items-start">
               <span className="text-gray-800 font-medium">{user.nickname}</span>
               {user.userId === comment.userId && (
                 <div className="flex space-x-2 text-sm">
@@ -174,13 +174,13 @@ const Comment = ({ postId }) => {
           placeholder="댓글을 입력하세요."
           value={commentContent}
           onChange={(e) => setCommentContent(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg p-2 resize-none"
+          className="w-full border border-gray-300 bg-gray-100 rounded-lg p-2 resize-none"
           rows={1}
           style={{ height: '42px' }}
         />
         <button
           type="submit"
-          className="bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center"
+          className="bg-orange-500 text-white rounded-lg hover:bg-orange-700 flex items-center justify-center"
           style={{ height: '42px', width: '80px', padding: '0 8px', whiteSpace: 'nowrap' }}
         >
           댓글 작성
