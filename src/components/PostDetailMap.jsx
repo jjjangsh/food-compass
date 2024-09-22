@@ -1,9 +1,15 @@
 /*global kakao*/
-import userStore from '../zustand/userStore';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { CustomOverlayMap, Map, MapMarker, MapTypeControl, ZoomControl } from 'react-kakao-maps-sdk';
-import { useEffect, useState } from 'react';
+import userStore from "../zustand/userStore";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {
+  CustomOverlayMap,
+  Map,
+  MapMarker,
+  MapTypeControl,
+  ZoomControl,
+} from "react-kakao-maps-sdk";
+import { useEffect, useState } from "react";
 
 const PostDetailMap = ({ post, postId }) => {
   const { user } = userStore();
@@ -25,7 +31,7 @@ const PostDetailMap = ({ post, postId }) => {
           const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
           resolve(coords); // 좌표 반환
         } else {
-          reject(new Error('주소 검색 실패'));
+          reject(new Error("주소 검색 실패"));
         }
       });
     });
@@ -48,20 +54,29 @@ const PostDetailMap = ({ post, postId }) => {
 
   //포스트 삭제하기
   const deletePost = async () => {
-    const confirm = window.confirm('게시글이 삭제됩니다. 삭제하시겠습니까?');
+    const confirm = window.confirm("게시글이 삭제됩니다. 삭제하시겠습니까?");
     if (confirm) {
-      const response = await axios.delete(`http://localhost:4000/posts/${postId}`);
-      navigate('/');
+      const response = await axios.delete(
+        `http://localhost:4000/posts/${postId}`
+      );
+      navigate("/");
       return response;
     }
   };
 
   return (
     <div className="mt-4 mb-8 ">
-      <Map center={{ lat: coords.lat, lng: coords.lng }} style={{ width: '860px', height: '300px' }} level={2}>
-        <MapTypeControl position={'TOPRIGHT'} />
+      <Map
+        center={{ lat: coords.lat, lng: coords.lng }}
+        style={{ width: "860px", height: "300px" }}
+        level={2}
+      >
+        <MapTypeControl position={"TOPRIGHT"} />
         <ZoomControl />
-        <MapMarker position={{ lat: coords.lat, lng: coords.lng }} onClick={() => setIsOpen(true)}></MapMarker>
+        <MapMarker
+          position={{ lat: coords.lat, lng: coords.lng }}
+          onClick={() => setIsOpen(true)}
+        ></MapMarker>
         {isOpen && (
           <CustomOverlayMap position={{ lat: coords.lat, lng: coords.lng }}>
             <div className="w-[288px] bg-white pb-2 border-2">
@@ -78,11 +93,18 @@ const PostDetailMap = ({ post, postId }) => {
                 </div>
                 <div className="body">
                   <div className="m-2">
-                    <img src={post.image} width="73" height="70" alt="식당이름" />
+                    <img
+                      src={post.image}
+                      width="73"
+                      height="70"
+                      alt="식당이름"
+                    />
                   </div>
                   <div>
                     <span className="text-xs m-2">주소 :</span>
-                    <span className="text-xs text-slate-500">{post.address}</span>
+                    <span className="text-xs text-slate-500">
+                      {post.address}
+                    </span>
                   </div>
                 </div>
               </div>

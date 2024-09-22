@@ -1,8 +1,6 @@
 import axios from 'axios';
-import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import userStore from '../zustand/userStore';
-import PostDetailMap from './PostDetailMap';
 import { useNavigate } from 'react-router-dom';
 
 const MyPosts = () => {
