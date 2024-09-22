@@ -36,9 +36,9 @@ const Home = () => {
     queryFn: async ({ pageParam = 1 }) => {
       const response = await axios.get(
         `https://classy-puzzling-collision.glitch.me/posts?${
-          localTab === "전체" ? "" : "location=" + localTab + "&"
+          localTab === "전체" ? null : "location=" + localTab + "&"
         }${
-          currentTab === "전체" ? "" : "foodType=" + currentTab + "&"
+          currentTab === "전체" ? null : "foodType=" + currentTab + "&"
         }_page=${pageParam}&_per_page=12`
       );
       // 최신순으로 정렬
