@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
-import userStore from '../zustand/userStore';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import userStore from "../zustand/userStore";
+import { useNavigate } from "react-router-dom";
 
 const MyPosts = () => {
   const navigate = useNavigate();
@@ -9,16 +9,14 @@ const MyPosts = () => {
     return state;
   });
 
-  const {
-    data: myPosts,
-    isPending,
-    isError
-  } = useQuery({
-    queryKey: ['myPosts'],
+  const { data: myPosts, isPending, isError } = useQuery({
+    queryKey: ["myPosts"],
     queryFn: async () => {
-      const response = await axios.get(`https://classy-puzzling-collision.glitch.me/posts?userId=${user.userId}`);
+      const response = await axios.get(
+        `https://classy-puzzling-collision.glitch.me/posts?userId=${user.userId}`
+      );
       return response.data;
-    }
+    },
   });
 
   if (isPending) {
@@ -44,11 +42,17 @@ const MyPosts = () => {
               key={myPost.id}
               className="flex flex-col w-full max-w-sm border border-gray-300 bg-white shadow-md p-4 gap-3 justify-start items-center rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
             >
-              <img src={myPost.image} alt={myPost.tite} className="h-48 w-full object-cover rounded-xl" />
+              <img
+                src={myPost.image}
+                alt={myPost.tite}
+                className="h-48 w-full object-cover rounded-xl"
+              />
 
               <div className="flex flex-col w-full text-center gap-2">
                 <p className="text-sm mb-4">{myPost.foodType}</p>
-                <p className="font-semibold text-lg text-gray-800">{myPost.title}</p>
+                <p className="font-semibold text-lg text-gray-800">
+                  {myPost.title}
+                </p>
                 <p className="text-sm text-gray-500">주소: {myPost.address}</p>
               </div>
             </div>
