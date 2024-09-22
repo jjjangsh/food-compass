@@ -24,7 +24,7 @@ const SignUp = () => {
       <div className="bg-orange-400 mt-44 shadow-md rounded-lg p-8 w-full max-w-md">
         <div className="flex items-center justify-center">
           <img
-            src="src/assets/logo_white.png"
+            src="/assets/logo_white.png"
             style={{
               width: '150px',
               height: '150px',
