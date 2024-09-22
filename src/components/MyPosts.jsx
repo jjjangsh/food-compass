@@ -16,7 +16,7 @@ const MyPosts = () => {
   } = useQuery({
     queryKey: ['myPosts'],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:4000/posts?userId=${user.userId}`);
+      const response = await axios.get(`https://classy-puzzling-collision.glitch.me/posts?userId=${user.userId}`);
       return response.data;
     }
   });
