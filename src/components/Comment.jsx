@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { addComment, deleteComment, getComments, updateComment } from './../api/comment';
+import { addComment, deleteComment, getCommentCount, getComments, updateComment } from './../api/comment';
 import userStore from '../zustand/userStore';
 import { useState } from 'react';
 
@@ -10,29 +10,49 @@ const Comment = ({ postId }) => {
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editedCommentContent, setEditedCommentContent] = useState('');
 
+  const [page, setPage] = useState(1);
+  const limit = 5;
+
+  // postId에 해당하는 댓글들 개수 가져오는 useQuery
+  const {
+    data: totalCommentsCount,
+    isLoading: isCountLoading,
+    isError: isCountError
+  } = useQuery({
+    queryKey: ['commentCount', postId],
+    queryFn: () => getCommentCount(postId)
+  });
+
+  const totalPages = Math.max(1, Math.ceil(totalCommentsCount / limit));
+
+  // postId에 해당하는 댓글들 페이지처리 해서 가져오는 useQuery
   const {
     data: comments,
     isLoading: isCommentLoading,
     isError: isCommentError
   } = useQuery({
-    queryKey: ['comments', postId],
-    queryFn: () => getComments(postId)
+    queryKey: ['comments', postId, page],
+    queryFn: () => getComments(postId, page, limit)
   });
 
+  // 댓글 작성 useMutation
   const addCommentMutation = useMutation({
     mutationFn: addComment,
     onSuccess: () => {
-      queryClient.invalidateQueries(['comments', postId]);
+      queryClient.invalidateQueries(['comment', postId, page]);
+      setPage(1);
     }
   });
 
+  // 댓글 삭제 useMutation
   const deleteCommentMutation = useMutation({
     mutationFn: deleteComment,
     onSuccess: () => {
-      queryClient.invalidateQueries(['comments', postId]);
+      queryClient.invalidateQueries(['comments', postId, page]);
     }
   });
 
+  // 댓글 수정 useMutation
   const updateCommentMutation = useMutation({
     mutationFn: updateComment,
     onSuccess: () => {
@@ -41,6 +61,7 @@ const Comment = ({ postId }) => {
     }
   });
 
+  // 댓글 작성 함수
   const handleAddComment = (e) => {
     e.preventDefault();
     if (!commentContent.trim()) return;
@@ -52,8 +73,10 @@ const Comment = ({ postId }) => {
     });
 
     setCommentContent('');
+    setPage(1);
   };
 
+  // 댓글 수정 함수
   const handleUpdateComment = (e) => {
     e.preventDefault();
     if (!editedCommentContent.trim()) return;
@@ -64,13 +87,14 @@ const Comment = ({ postId }) => {
     });
   };
 
+  // 댓글 수정 모드 취소 함수
   const handleCancelEdit = () => {
     setEditingCommentId(null);
     setEditedCommentContent('');
   };
 
-  if (isCommentLoading) return <div>댓글을 불러오는 중입니다...</div>;
-  if (isCommentError) return <div>댓글을 불러오는 중 에러가 발생했습니다.</div>;
+  if (isCommentLoading || isCountLoading) return <div>댓글을 불러오는 중입니다...</div>;
+  if (isCommentError || isCountError) return <div>댓글을 불러오는 중 에러가 발생했습니다.</div>;
 
   return (
     <div className="border-2 border-gray-300 rounded-lg p-6 mt-6">
@@ -129,6 +153,20 @@ const Comment = ({ postId }) => {
       ) : (
         <div>댓글이 없습니다.</div>
       )}
+
+      <div className="flex justify-center mt-4">
+        <button className="px-1" onClick={() => setPage((prev) => Math.max(prev - 1, 1))} disabled={page === 1}>
+          &lt;
+        </button>
+        <span>{`${page} / ${totalPages}`}</span>
+        <button
+          className="px-1"
+          onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={page === totalPages}
+        >
+          &gt;
+        </button>
+      </div>
 
       <form onSubmit={handleAddComment} className="mt-6 flex space-x-4">
         <textarea

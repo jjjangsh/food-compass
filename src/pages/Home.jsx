@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import Banner from "../components/Banner";
 // import YoutubeVideos from '../components/YoutubeVideos';
 
 const Home = () => {
@@ -68,9 +69,8 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col mt-20">
-        <div className="w-full bg-[url('./assets/banner.jpg')] bg-center bg-cover h-60 flex justify-center items-center"></div>
-
+      <div className=" flex-col mt-20">
+        <Banner />
         <div className="fixed bottom-2 right-1 flex flex-col gap-5 p-10 ml-2 mt-2 z-50">
           <div
             className="flex hover:cursor-pointer"
@@ -99,7 +99,7 @@ const Home = () => {
 
         <div className="flex flex-col w-full gap-4 justify-center items-center mt-4">
           <div className="flex flex-col items-end w-full px-4 md:px-16 my-5">
-            <div className="flex flex-row gap-5 relative top-[55px] right-[5px]">
+            <div className="flex flex-row gap-5 relative top-[55px] right-[35px] mb-4">
               <select
                 value={localTab}
                 onChange={(e) => setLocalTab(e.target.value)}
@@ -108,8 +108,8 @@ const Home = () => {
                 <option value="" disabled hidden>
                   지역
                 </option>
-                {localTabArr.map((tab, index) => (
-                  <option key={index} value={tab}>
+                {localTabArr.map((tab) => (
+                  <option key={tab} value={tab}>
                     {tab}
                   </option>
                 ))}
@@ -122,14 +122,18 @@ const Home = () => {
                 <option value="" disabled hidden>
                   음식
                 </option>
-                {foodTypeTabArr.map((tab, index) => (
-                  <option key={index} value={tab}>
+                {foodTypeTabArr.map((tab) => (
+                  <option key={tab} value={tab}>
                     {tab}
                   </option>
                 ))}
               </select>
             </div>
           </div>
+        </div>
+        {/* <YoutubeVideos localTab={localTab} currentTab={currentTab} /> */}
+        <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-3 mx-auto text-center justify-items-center p-3">
+          전체 게시물
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-8 px-4 md:px-16 py-10 justify-items-center">
           {data.pages.map((page) => {
