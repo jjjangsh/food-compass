@@ -59,7 +59,7 @@ const YoutubeVideos = ({ localTab, currentTab }) => {
         </p>
         <p className="ml-6"> 맛집 추천 영상</p>
       </div>
-      <div className="grid grid-cols-3 justify-items-center mt-14 gap-2 mx-24 ">
+      <div className="grid grid-cols-3 justify-items-center mt-14 gap-28 mx-24 ">
         {videoData.map((video) => {
           return (
             <iframe

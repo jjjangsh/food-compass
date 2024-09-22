@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Banner from '../components/Banner';
-// import YoutubeVideos from "../components/YoutubeVideos";
+// import YoutubeVideos from '../components/YoutubeVideos';
 
 const Home = () => {
   const queryClient = useQueryClient();

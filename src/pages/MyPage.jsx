@@ -89,7 +89,7 @@ const MyPage = () => {
           />
 
           <div className="mt-4  p-1 rounded-lg  hover:bg-blue-900 hover:text-white bg-orange-200 flex justify-center">
-            <button className="hover:cursor-pointer">수정</button>
+            <button className=" hover:cursor-pointer">수정</button>
           </div>
         </form>
       </div>

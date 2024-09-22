@@ -53,9 +53,29 @@
 날씨
 
 </br>
+
 <img src="https://github.com/user-attachments/assets/00395595-4a12-4be4-ae18-db691d8bd336" width="400" height="300"/>
 </br>
 댓글
+
+</br>
+
+<img src='https://github.com/user-attachments/assets/de842e15-7972-4d1a-9fea-bce3122fbfde'/>
+</br>
+프로필 닉네임 변경
+
+</br>
+
+<img src='https://github.com/user-attachments/assets/be2e3a4e-e436-4584-9b0f-932ff2178c8f'/>
+</br>
+내가 작성한 게시물 불러오기
+
+</br>
+
+<img src='https://github.com/user-attachments/assets/975ed257-856b-4fba-87de-5c3453faa24d'/>
+<img src="https://github.com/user-attachments/assets/346555c3-85dc-4dfc-89d6-83a4e7ed7773"/>
+</br>
+필터별 youtube 동영상 가져오기
 
 </br>
 
