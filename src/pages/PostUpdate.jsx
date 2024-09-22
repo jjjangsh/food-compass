@@ -31,7 +31,7 @@ const PostUpdate = () => {
     navigate(`/postdetail?id=${postId}`);
   };
   return (
-    <div className="flex w-full justify-center items-center h-[calc(100vh-100px)]">
+    <div className="flex w-full justify-center items-center h-full">
       <PostForm isEditing initialData={initialData} onSubmit={handleUpdateSubmit} />
     </div>
   );
