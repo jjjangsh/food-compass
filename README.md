@@ -27,7 +27,7 @@
 # 담당 기능
 
 - 장성현 (팀장) : 로그인 및 회원가입, 댓글 CRUD 및 페이지네이션, 날씨 API 활용
-- 김경혜 (팀원) : 메인페이지 및 전체 레이아웃, 지도에서 주소 검색 및 마크 표시, 무한스크롤
+- 김경혜 (팀원) : 메인페이지 및 전체 레이아웃, 지도에서 주소 검색 및 마크 표시, 탭으로 게시글 필터링, 무한스크롤(json-server 버전차이에 의해 실패)
 - 유재희 (팀원) : 게시글 작성 및 수정페이지(이미지 업로드, 내용 입력, 음식 카테고리 선택 기능)
 - 박민정 (팀원) : 마이 페이지(내 작성글 모아보기, 정보 수정), 유튜브 API 활용하여 카테고리별 동영상 불러오기
 - 정희록 (팀원) : 게시글 상세 페이지 (게시글 삭제기능), 수정 페이지로 리다이렉션, 캐러셀 슬라이드 구현
@@ -92,6 +92,17 @@
 </br>
 </br>
 >>>>>>> 38a01bdb6b250bd3865a0eb03ed0c832cc2b75f3
+
+</br>
+탭으로 게시물 필터링
+
+<img src="https://github.com/user-attachments/assets/0980a49a-c160-403d-97b8-1637140afdf4" alt="탭 시연 움짤"/>
+
+</br>
+
+
+
+
 # 기술 스택
 
 [![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1727006118237?alt=media&token=72f85118-ca95-4b44-b092-6541439b2a85)](https://github.com/msdio/stackticon)
