@@ -6,10 +6,10 @@ export const getComments = async (postId, page, limit) => {
     params: {
       postId,
       _page: page,
-      _per_page: limit
+      _limit: limit
     }
   });
-  return response.data.data || [];
+  return response.data || [];
 }
 
 // 특정 postId의 댓글 수만 가져오는 API

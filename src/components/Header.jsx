@@ -50,7 +50,7 @@ const Header = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex w-full justify-center py-4 pb-44">{children}</div>
+      <div className="flex w-full justify-center py-4">{children}</div>
     </>
   );
 };

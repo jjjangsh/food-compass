@@ -34,6 +34,9 @@ const Comment = ({ postId }) => {
     queryKey: ['comments', postId, page],
     queryFn: () => getComments(postId, page, limit)
   });
+  console.log(totalCommentsCount);
+  console.log(totalPages);
+  console.log(comments);
 
   // 댓글 작성 useMutation
   const addCommentMutation = useMutation({
