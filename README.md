@@ -60,10 +60,10 @@
 
 </br>
 
-<<<<<<< HEAD
-<img src='https://github.com/user-attachments/assets/de842e15-7972-4d1a-9fea-bce3122fbfde'/>
+
+<img src='https://github.com/user-attachments/assets/15951cea-8e7a-4e01-8a21-3ea8048d6592'/>
 </br>
-프로필 닉네임 변경
+프로필 변경
 
 </br>
 
@@ -73,14 +73,13 @@
 
 </br>
 
-<img src='https://github.com/user-attachments/assets/975ed257-856b-4fba-87de-5c3453faa24d'/>
-<img src="https://github.com/user-attachments/assets/346555c3-85dc-4dfc-89d6-83a4e7ed7773"/>
+<img src='https://github.com/user-attachments/assets/be2e3a4e-e436-4584-9b0f-932ff2178c8f'/>
 </br>
 필터별 youtube 동영상 가져오기
 
 </br>
 
-=======
+
 <img width="300" alt="게시글 작성" src="https://github.com/user-attachments/assets/aa5a7410-0034-46ba-a600-56a5c966d5d6">
 </br>
 포스트 작성
@@ -91,7 +90,7 @@
 포스트 수정
 </br>
 </br>
->>>>>>> 38a01bdb6b250bd3865a0eb03ed0c832cc2b75f3
+
 
 </br>
 탭으로 게시물 필터링
@@ -109,6 +108,8 @@
 
 # 트러블 슈팅
 
-</br>
+- 유튜브 api를 사용해 동영상을 불러오는 것에는 하루 할당량이 정해져있음. 하여 이를 보다 효율적으로 사용하기 위해서 staleTime을 사용하여 불필요한 fetching을 줄임
+
+- useQuery를 사용하여 키워드 필터링이 적용된 동영상을 가져올 때 queryKey 사용 대신 키워드가 변경 될 때 마다 refetch를 실행하게하여 성능을 개선시킴
 
 # 팀원 소감
