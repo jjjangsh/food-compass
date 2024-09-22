@@ -1,44 +1,34 @@
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import Banner from "../components/Banner";
-import YoutubeVideos from "../components/YoutubeVideos";
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import Banner from '../components/Banner';
+// import YoutubeVideos from "../components/YoutubeVideos";
 
 const Home = () => {
   const queryClient = useQueryClient();
-  const [localTab, setLocalTab] = useState("전체");
-  const [currentTab, setTab] = useState("전체");
+  const [localTab, setLocalTab] = useState('전체');
+  const [currentTab, setTab] = useState('전체');
   const navigate = useNavigate();
   const { ref, inView } = useInView({ threshold: 1 });
-  const localTabArr = [
-    "전체",
-    "서울",
-    "부산",
-    "인천",
-    "경기",
-    "제주도",
-    "기타",
-  ];
-  const foodTypeTabArr = ["전체", "한식", "일식", "중식", "양식", "디저트"];
+  const localTabArr = ['전체', '서울', '부산', '인천', '경기', '제주도', '기타'];
+  const foodTypeTabArr = ['전체', '한식', '일식', '중식', '양식', '디저트'];
 
   // 필터링에 따라 포스트 가져오기
-  const {
-    data,
-    isPending,
-    isError,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey: ["post"],
+  const { data, isPending, isError, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    queryKey: ['post'],
     queryFn: async ({ pageParam = 1 }) => {
       const response = await axios.get(
+<<<<<<< HEAD
         `https://classy-puzzling-collision.glitch.me/posts?${
           localTab === "전체" ? null : "location=" + localTab + "&"
         }${
           currentTab === "전체" ? null : "foodType=" + currentTab + "&"
+=======
+        `https://classy-puzzling-collision.glitch.me/posts?${localTab === '전체' ? '' : 'location=' + localTab + '&'}${
+          currentTab === '전체' ? '' : 'foodType=' + currentTab + '&'
+>>>>>>> 707250dea355348d2d08c5835f60073fa6ad48f2
         }_page=${pageParam}&_per_page=12`
       );
       // 최신순으로 정렬
@@ -50,12 +40,12 @@ const Home = () => {
         return lastPage.next;
       }
       return undefined;
-    },
+    }
   });
 
   // 탭 누르면 post 정보 유효성 초기화해서 다시 불러오기
   useEffect(() => {
-    queryClient.invalidateQueries(["post"]);
+    queryClient.invalidateQueries(['post']);
   }, [queryClient, localTab, currentTab]);
 
   // 무한 스크롤
@@ -75,24 +65,15 @@ const Home = () => {
           <div
             className="flex hover:cursor-pointer"
             onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/18/18529.png"
-              className="w-6 mr-2"
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/18/18529.png" className="w-6 mr-2" />
             <p className="font-semibold text-[18px]">TOP</p>
           </div>
 
-          <div
-            className="flex hover:cursor-pointer"
-            onClick={() => navigate("/postwrite")}
-          >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2740/2740697.png"
-              className="w-6 mr-2"
-            />
+          <div className="flex hover:cursor-pointer" onClick={() => navigate('/postwrite')}>
+            <img src="https://cdn-icons-png.flaticon.com/512/2740/2740697.png" className="w-6 mr-2" />
             <p className="font-semibold text-[18px]">글쓰기</p>
           </div>
         </div>
@@ -131,7 +112,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <YoutubeVideos localTab={localTab} currentTab={currentTab} />
+        {/* <YoutubeVideos localTab={localTab} currentTab={currentTab} /> */}
         <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-3 mx-auto text-center justify-items-center p-3">
           게시물
         </div>
@@ -145,11 +126,7 @@ const Home = () => {
                   onClick={() => navigate(`/postdetail?id=${post.id}`)}
                 >
                   {post.image ? (
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="h-48 w-full object-cover rounded-xl"
-                    />
+                    <img src={post.image} alt={post.title} className="h-48 w-full object-cover rounded-xl" />
                   ) : (
                     <div className="h-48 w-full flex justify-center items-center bg-gray-200 rounded-xl">
                       이미지가 없음
@@ -157,22 +134,15 @@ const Home = () => {
                   )}
                   <div className="flex flex-col w-full text-center gap-2">
                     <p className="text-sm mb-4">{post.foodType}</p>
-                    <p className="font-semibold text-lg text-gray-800">
-                      {post.title}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      주소: {post.address}
-                    </p>
+                    <p className="font-semibold text-lg text-gray-800">{post.title}</p>
+                    <p className="text-sm text-gray-500">주소: {post.address}</p>
                   </div>
                 </div>
               );
             });
           })}
         </div>
-        <div
-          ref={ref}
-          className="flex justify-center bg-orange-500 text-white text-2xl p-3"
-        >
+        <div ref={ref} className="flex justify-center bg-orange-500 text-white text-2xl p-3">
           끝이에요
         </div>
       </div>
