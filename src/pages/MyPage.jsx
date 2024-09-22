@@ -20,6 +20,10 @@ const MyPage = () => {
       return setNewNickname('');
     }
 
+    if (newNickname === '') {
+      return alert('입력된 닉네임이 없습니다.');
+    }
+
     try {
       const { data } = await axios.patch(
         'https://moneyfulpublicpolicy.co.kr/profile',
@@ -63,12 +67,15 @@ const MyPage = () => {
   }, []);
   return (
     <div>
-      <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-8 mx-auto text-center justify-items-center p-3">
+      <div
+        className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-36
+       mb-6 mx-auto text-center justify-items-center p-3"
+      >
         내 프로필
       </div>
       <div className=" flex flex-col  rounded-lg justify-center items-center w-80 h-96 m-auto bg-amber-500">
         <img className="w-52 h-52 " src={profileImg} />
-        <h5 className="p-3">닉네임: {user.nickname} </h5>
+        <h5 className="p-3 text-xl">닉네임: {user.nickname} </h5>
         <form className="gap-6" onSubmit={changeNicknameHandler}>
           <label>닉네임 수정 : </label>
           <input
@@ -80,8 +87,9 @@ const MyPage = () => {
               setNewNickname(e.target.value);
             }}
           />
-          <div className=" hover:cursor-pointer m-4 p-1 rounded-lg bg-fuchsia-200 flex justify-center">
-            <button>수정</button>
+
+          <div className="mt-4  p-1 rounded-lg  hover:bg-blue-900 hover:text-white bg-orange-200 flex justify-center">
+            <button className="hover:cursor-pointer">수정</button>
           </div>
         </form>
       </div>
