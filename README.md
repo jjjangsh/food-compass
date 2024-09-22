@@ -16,11 +16,11 @@
 
 </br>
 
-- 배포 링크 :
+- 배포 링크 : https://food-compass-beige.vercel.app/
 
 </br>
 
-- 깃허브 링크 :
+- 깃허브 링크 : https://github.com/jjjangsh/food-compass
 
 </br>
 
@@ -41,11 +41,13 @@
 로그인
 
 </br>
+</br>
 
 <img src="https://github.com/user-attachments/assets/1289da2a-d28a-4c20-a8c9-637c2e560217" width="300" height="350"/>
 </br>
 회원가입
 
+</br>
 </br>
 
 <img src="https://github.com/user-attachments/assets/ad3b1164-cdc9-43b1-b9d3-3a79acbcf909" width="500" height="100"/>
@@ -53,16 +55,20 @@
 날씨
 
 </br>
+</br>
 
 <img src="https://github.com/user-attachments/assets/00395595-4a12-4be4-ae18-db691d8bd336" width="400" height="300"/>
 </br>
 댓글
 
 </br>
+</br>
+
 <img src="https://github.com/user-attachments/assets/15951cea-8e7a-4e01-8a21-3ea8048d6592" width="400" height="300"/>
 </br>
 프로필 변경
 
+</br>
 </br>
 
 <img src='https://github.com/user-attachments/assets/be2e3a4e-e436-4584-9b0f-932ff2178c8f' width="600" height="300"/>
@@ -70,11 +76,13 @@
 내가 작성한 게시물 불러오기
 
 </br>
+</br>
 
 <img src='https://github.com/user-attachments/assets/05dadd2d-8621-47f8-9111-16e9cbb49dc2' width="600" height="300"/>
 </br>
 필터별 youtube 동영상 가져오기
 
+</br>
 </br>
 
 <img width="300" alt="게시글 작성" src="https://github.com/user-attachments/assets/aa5a7410-0034-46ba-a600-56a5c966d5d6">
@@ -85,6 +93,13 @@
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/08adfa07-4388-4308-91d9-790eb1b54650">
 </br>
 포스트 수정
+</br>
+
+</br>
+
+<img src="https://github.com/user-attachments/assets/acbf1631-2e8e-48c2-94dd-015526f833a4" width="400"/>
+</br>
+게시글 상세 페이지
 </br>
 
 </br>
@@ -101,8 +116,97 @@
 
 # 트러블 슈팅
 
-- 유튜브 api를 사용해 동영상을 불러오는 것에는 하루 할당량이 정해져있음. 하여 이를 보다 효율적으로 사용하기 위해서 staleTime을 사용하여 불필요한 fetching을 줄임
+💣 문제 : 댓글을 불러오지 못하는 문제, 댓글 페이지네이션 기능에서 1페이지에서 2페이지로 넘어가도 1페이지에 해당하는 댓글들만 보이는 문제
 
-- useQuery를 사용하여 키워드 필터링이 적용된 동영상을 가져올 때 queryKey 사용 대신 키워드가 변경 될 때 마다 refetch를 실행하게하여 성능을 개선시킴
+</br>
+
+문제 화면⬇️</br>
+<img src='https://github.com/user-attachments/assets/cb5614a0-bb01-49f2-bffa-15563a28e4ee' width="400" height="400"/>
+
+</br>
+에러 코드⬇️</br>
+
+```
+// postId에 해당하는 댓글들 개수 가져오는 useQuery
+
+  const {
+    data: totalCommentsCount,
+    isLoading: isCountLoading,
+    isError: isCountError
+  } = useQuery({
+    queryKey: ['comments', postId, page],
+    queryFn: () => getCommentCount(postId)
+  });
+
+  const totalPages = Math.ceil(totalCommentsCount / limit);
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+  // postId에 해당하는 댓글들 페이지처리 해서 가져오는 useQuery
+  
+  const {
+    data: comments,
+    isLoading: isCommentLoading,
+    isError: isCommentError
+  } = useQuery({
+    queryKey: ['comments', postId, page],
+    queryFn: () => getComments(postId, page, limit)
+  });
+```
+
+</br>
+
+- 원인
+  - 위 두개의 useQuery에서 같은 queryKey를 사용하고 있어 내 의도와 다르게 동작
+- 위 두개의 useQuery의 queryKey가 같으면 안 되는 이유
+  - 서로 다른 데이터가 캐시에 저장되면서 데이터 덮어쓰기 문제가 발생
+  - 캐시 무효화 시 의도하지 않은 쿼리가 다시 호출되고 성능 저하 유발
+  - 잘못된 데이터가 표시되거나, 댓글 목록이나 개수를 제대로 불러오지 못하는 오류 발생
+- 해결 방법
+  - 두 useQuery는 서로 다른 데이터를 캐시하고 관리하는 용도이기 때문에 queryKey를 분리하는 것이 적절
+
+</br>
+
+수정 코드⬇️</br>
+
+```
+// postId에 해당하는 댓글들 개수 가져오는 useQuery
+  const {
+    data: totalCommentsCount,
+    isLoading: isCountLoading,
+    isError: isCountError
+  } = useQuery({
+    queryKey: ['commentCount', postId],
+    queryFn: () => getCommentCount(postId)
+  });
+  
+  ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  // postId에 해당하는 댓글들 페이지처리 해서 가져오는 useQuery
+  const {
+    data: comments,
+    isLoading: isCommentLoading,
+    isError: isCommentError
+  } = useQuery({
+    queryKey: ['comments', postId, page],
+    queryFn: () => getComments(postId, page, limit)
+  });
+```
+
+</br>
+
+수정 후 화면⬇️</br>
+
+<img src='https://github.com/user-attachments/assets/33f74237-8da6-40a3-a98d-aac0749362f3' width="400" height="400"/>
+</br>
+
+</br>
 
 # 팀원 소감
+- 장성현 : 외부 API를 사용하면서 공식문서나 reference를 분석하는 것이 어려웠지만 좋은 경험이었습니다.
+- 김경혜 : 이번에 외부 API와 json-server를 깊게 알고 다루어야 하는 작업을 하면서 이에 대한 이해가 크게 상승한 것을 느꼈고, 내가 원하는 기능을 구현하려면 postData와 같은 연결되는 데이터나 활용 가능한 기능을 잘 이해해야 한다는 것을 알게 되었다.
+- 유재희 : 게시글 작성 페이지를 맡으면서 데이터가 어떻게 저장되는지에 대한 구성도 중요하다는 것을 깨달았습니다. 게시글을 저장하고 필요할 때 쉽게 불러올 수 있도록 설계하는 과정이 유익했습니다! 프로젝트를 문제없이 마무리해낸 조원들에게 감사드리고 모두 고생하셨습니다!!
+- 박민정 : 데이터를 가져오고 활용하면서 axios, useQuery 등에 대한 이해도가 상승하였고, 외부데이터를 가져와서 사용하는 경험을 통해 보다 풍부하게 웹 사이트를 구현 할 수 있게 되어 아주 유익한 시간이었습니다. 또한 처음 배포를 해봄으로써 진행이 수월하지만은 못했지만 팀원분들과 함께 해결해나가면서 협업의 가치 및 중요성을 배웠습니다 팀원분들께 감사드립니다.
+- 정희록 : 요번 프로젝트를 통해 외부 API와 서버에 대한 이해도가 깊어져서 정말 유익했다고 생각합니다. 또한 배포 과정 및 배포 후에도 오류가 많이 날 수 있다는 것을 경험했고 다음 프로젝트에는 QA기간을 더 늘리면 좋겠다는 생각을 했습니다. 마지막으로 끝까지 고생해준 팀원들에게 넘 감사드립니다.
+
+</br>
