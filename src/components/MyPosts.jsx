@@ -44,11 +44,7 @@ const MyPosts = () => {
               key={myPost.id}
               className="flex flex-col w-full max-w-sm border border-gray-300 bg-white shadow-md p-4 gap-3 justify-start items-center rounded-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
             >
-              {myPost.image ? (
-                <img src={myPost.image} alt={myPost.tite} className="h-48 w-full object-cover rounded-xl" />
-              ) : (
-                <img src="src/assets/image.png" className="h-48 w-full object-cover rounded-xl" />
-              )}
+              <img src={myPost.image} alt={myPost.tite} className="h-48 w-full object-cover rounded-xl" />
 
               <div className="flex flex-col w-full text-center gap-2">
                 <p className="text-sm mb-4">{myPost.foodType}</p>

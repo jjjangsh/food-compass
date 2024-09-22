@@ -12,7 +12,7 @@ const Header = ({ children }) => {
           <img
             onClick={() => navigate('/')}
             width={75}
-            src="../assets/logo_white.png"
+            src="/assets/logo_white.png"
             className="rounded-full hover:cursor-pointer"
             alt="로고"
           />
