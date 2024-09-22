@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Banner from '../components/Banner';
-// import YoutubeVideos from '../components/YoutubeVideos';
+// import YoutubeVideos from "../components/YoutubeVideos";
 
 const Home = () => {
   const queryClient = useQueryClient();
@@ -20,9 +20,9 @@ const Home = () => {
     queryKey: ['post'],
     queryFn: async ({ pageParam = 1 }) => {
       const response = await axios.get(
-        `https://classy-puzzling-collision.glitch.me/posts?location=${localTab === '전체' ? '' : localTab}&foodType=${
-          currentTab === '전체' ? '' : currentTab
-        }&_page=${pageParam}&_per_page=12`
+        `https://classy-puzzling-collision.glitch.me/posts?${localTab === '전체' ? '' : 'location=' + localTab + '&'}${
+          currentTab === '전체' ? '' : 'foodType=' + currentTab + '&'
+        }_page=${pageParam}&_per_page=12`
       );
       // 최신순으로 정렬
       return response.data;
