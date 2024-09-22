@@ -38,75 +38,75 @@
 
 <img src="https://github.com/user-attachments/assets/f15daff3-b44c-4d6e-bc76-58025884f94d" width="300" height="300"/>
 </br>
-로그인
+⬆️로그인
 
 </br>
 </br>
 
 <img src="https://github.com/user-attachments/assets/1289da2a-d28a-4c20-a8c9-637c2e560217" width="300" height="350"/>
 </br>
-회원가입
+⬆️회원가입
 
 </br>
 </br>
 
 <img src="https://github.com/user-attachments/assets/ad3b1164-cdc9-43b1-b9d3-3a79acbcf909" width="500" height="100"/>
 </br>
-날씨
+⬆️날씨
 
 </br>
 </br>
 
 <img src="https://github.com/user-attachments/assets/00395595-4a12-4be4-ae18-db691d8bd336" width="400" height="300"/>
 </br>
-댓글
+⬆️댓글
 
 </br>
 </br>
 
 <img src="https://github.com/user-attachments/assets/15951cea-8e7a-4e01-8a21-3ea8048d6592" width="400" height="300"/>
 </br>
-프로필 변경
+⬆️프로필 변경
 
 </br>
 </br>
 
 <img src='https://github.com/user-attachments/assets/be2e3a4e-e436-4584-9b0f-932ff2178c8f' width="600" height="300"/>
 </br>
-내가 작성한 게시물 불러오기
+⬆️내가 작성한 게시물 불러오기
 
 </br>
 </br>
 
 <img src='https://github.com/user-attachments/assets/05dadd2d-8621-47f8-9111-16e9cbb49dc2' width="600" height="300"/>
 </br>
-필터별 youtube 동영상 가져오기
+⬆️필터별 youtube 동영상 가져오기
 
 </br>
 </br>
 
 <img width="300" alt="게시글 작성" src="https://github.com/user-attachments/assets/aa5a7410-0034-46ba-a600-56a5c966d5d6">
 </br>
-포스트 작성
+⬆️포스트 작성
 </br>
 </br>
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/08adfa07-4388-4308-91d9-790eb1b54650">
 </br>
-포스트 수정
+⬆️포스트 수정
 </br>
 
 </br>
 
 <img src="https://github.com/user-attachments/assets/acbf1631-2e8e-48c2-94dd-015526f833a4" width="400"/>
 </br>
-게시글 상세 페이지
+⬆️게시글 상세 페이지
 </br>
 
 </br>
 
 <img src="https://github.com/user-attachments/assets/0980a49a-c160-403d-97b8-1637140afdf4" alt="탭 시연 움짤"/>
 </br>
-탭으로 게시물 필터링
+⬆️탭으로 게시물 필터링
 
 </br>
 
