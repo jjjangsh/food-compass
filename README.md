@@ -73,7 +73,7 @@
 
 </br>
 
-<img src='https://github.com/user-attachments/assets/05dadd2d-8621-47f8-9111-16e9cbb49dc2'/
+<img src='https://github.com/user-attachments/assets/05dadd2d-8621-47f8-9111-16e9cbb49dc2'/>
 </br>
 필터별 youtube 동영상 가져오기
 
