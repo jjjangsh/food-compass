@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Banner from '../components/Banner';
-import YoutubeVideos from '../components/YoutubeVideos';
+// import YoutubeVideos from '../components/YoutubeVideos';
 
 const Home = () => {
   const queryClient = useQueryClient();
@@ -105,7 +105,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <YoutubeVideos localTab={localTab} currentTab={currentTab} />
+        {/* <YoutubeVideos localTab={localTab} currentTab={currentTab} /> */}
         <div className=" w-8/12 bg-orange-200  text-2xl rounded-3xl flex flex-col mt-24 mb-3 mx-auto text-center justify-items-center p-3">
           게시물
         </div>
