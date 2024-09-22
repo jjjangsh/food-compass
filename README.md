@@ -59,6 +59,16 @@
 
 </br>
 
+<img width="300" alt="게시글 작성" src="https://github.com/user-attachments/assets/aa5a7410-0034-46ba-a600-56a5c966d5d6">
+</br>
+포스트 작성
+</br>
+</br>
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/08adfa07-4388-4308-91d9-790eb1b54650">
+</br>
+포스트 수정
+</br>
+</br>
 # 기술 스택
 
 [![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1727006118237?alt=media&token=72f85118-ca95-4b44-b092-6541439b2a85)](https://github.com/msdio/stackticon)
