@@ -24,7 +24,7 @@ const Header = ({ children }) => {
                 <button onClick={() => navigate('/mypage')} className="headerBtn">
                   마이페이지
                 </button>
-                <button onClick={logout} className="headerBtn bg-blue-900 text-white">
+                <button onClick={logout} className="headerBtn">
                   로그아웃
                 </button>
               </>
