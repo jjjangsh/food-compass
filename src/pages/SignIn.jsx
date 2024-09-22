@@ -26,7 +26,7 @@ const SignIn = () => {
 
   return (
     <div className="flex items-center justify-center w-full relative top-24">
-      <div className="bg-sky-200 shadow-md rounded-lg p-8 w-full max-w-md">
+      <div className="bg-orange-400 shadow-md rounded-lg mt-44 p-8 w-full max-w-md">
         <div className="flex items-center justify-center">
           <img
             src="src/assets/logo_white.png"

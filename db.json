@@ -58,6 +58,16 @@
       "foodType": "디저트",
       "address": "경기 파주시 조리읍 장곡리 351-2",
       "image": ""
+    },
+    {
+      "id": "3e4d",
+      "userId": "testj",
+      "title": "테스트용",
+      "postContent": "테스트용",
+      "foodType": "중식",
+      "address": "서울 종로구 서린동 148",
+      "image": "https://velog.velcdn.com/images/bsjaehee94/post/924c4319-a5c3-457e-a0d5-6e4804d7e26b/image.png",
+      "location": "서울"
     }
   ],
   "comments": [

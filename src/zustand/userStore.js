@@ -12,6 +12,7 @@ const userStore = create((set) => ({
   logout: () => {
     localStorage.removeItem('user');
     set({ user: null });
+    alert("로그아웃 완료!");
   }
 }));
 

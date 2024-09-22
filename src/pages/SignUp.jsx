@@ -21,7 +21,7 @@ const SignUp = () => {
 
   return (
     <div className="flex items-center justify-center w-full relative top-[50px]">
-      <div className="bg-sky-200 shadow-md rounded-lg p-8 w-full max-w-md">
+      <div className="bg-orange-400 mt-44 shadow-md rounded-lg p-8 w-full max-w-md">
         <div className="flex items-center justify-center">
           <img
             src="src/assets/logo_white.png"

@@ -27,7 +27,7 @@ const AuthForm = ({ type, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-4">
-        <label className="block text-sm text-sky-700 font-bold">아이디</label>
+        <label className="block text-sm font-bold">아이디</label>
         <input
           type="text"
           name="id"
@@ -39,7 +39,7 @@ const AuthForm = ({ type, onSubmit }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm text-sky-700 font-bold">비밀번호</label>
+        <label className="block text-sm  font-bold">비밀번호</label>
         <input
           type="password"
           name="password"
@@ -52,7 +52,7 @@ const AuthForm = ({ type, onSubmit }) => {
       </div>
       {type === 'signup' && (
         <div className="mb-4">
-          <label className="block text-sm text-sky-700 font-bold">닉네임</label>
+          <label className="block text-sm font-bold">닉네임</label>
           <input
             type="text"
             name="nickname"
