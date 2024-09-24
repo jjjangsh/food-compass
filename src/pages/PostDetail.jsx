@@ -4,8 +4,10 @@ import PostDetailMap from '../components/PostDetailMap';
 import { useQuery } from '@tanstack/react-query';
 import Comment from '../components/Comment';
 import { fetchSelectedPost } from '../api/post';
+import userStore from '../zustand/userStore';
 
 const PostDetail = () => {
+  const user = userStore();
   //포스트 아이디 가져오기
   const [searchParams, setSearchParams] = useSearchParams();
   const postId = searchParams.get('id');
@@ -21,6 +23,10 @@ const PostDetail = () => {
 
   if (isPostPending) return <div>포스트를 불러오고 있습니다 ...</div>;
   if (isPostError) return <div>에러가 발생했습니다 ...</div>;
+
+  if (!user) {
+    return <div>로그인이 필요한 서비스입니다.</div>;
+  }
 
   return (
     <div className="m-auto mt-8">
