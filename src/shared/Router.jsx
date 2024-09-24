@@ -15,7 +15,6 @@ const Router = () => {
       <Header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/postdetail" element={<PostDetail />} />
 
           <Route element={<AuthRoute />}>
             <Route path="/signin" element={<SignIn />} />
@@ -25,6 +24,7 @@ const Router = () => {
             <Route path="/postwrite" element={<PostWrite />} />
             <Route path="/postupdate" element={<PostUpdate />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/postdetail" element={<PostDetail />} />
           </Route>
         </Routes>
       </Header>
